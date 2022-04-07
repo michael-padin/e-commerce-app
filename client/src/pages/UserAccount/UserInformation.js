@@ -1,8 +1,6 @@
 import styled from "styled-components";
 import PersonOutlineIcon from "@mui/icons-material/PersonOutline";
-import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
 import UserProfile from "../../components/UserAccount/UserProfile.js";
-import UserWishlist from "./UserWishList.js";
 import { useRouteMatch, Switch, Route, Redirect } from "react-router";
 import { mobile } from "../../responsive.js";
 import { Link } from "react-router-dom";
@@ -89,23 +87,12 @@ const UserInformation = () => {
               <List>My Account</List>
             </Link>
           </ListContainer>
-          <ListContainer>
-            <IconContainer>
-              <FavoriteBorderIcon />
-            </IconContainer>
-            <Link to={`${url}/mywishlist` } style = {LinkStyle}>
-              <List>My Wishlist</List>
-            </Link>
-          </ListContainer>
         </ListItems>
       </Sidebar>
 
       <Switch>
         <Route exact path={`${path}/myaccount`}>
           {user ? <UserProfile /> : <Redirect to="/" />}
-        </Route>
-        <Route exact path={`${path}/mywishlist`}>
-          {user ? <UserWishlist /> : <Redirect to="/" />}
         </Route>
       </Switch>
     </Container>

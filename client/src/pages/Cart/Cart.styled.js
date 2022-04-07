@@ -44,16 +44,6 @@ export const TopButton = styled.button`
 
 `;
 
-export const TopTexts = styled.div`
-  ${mobile({ display: "none" })}
-`;
-
-export const TopText = styled.span`
-  text-decoration: underline;
-  cursor: pointer;
-  margin: 0 10px;
-`;
-
 export const EmptyCartContainer = styled.div`
   min-height: 50vh;
   display: flex;

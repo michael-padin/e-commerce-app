@@ -143,8 +143,8 @@ export const MenuItem = styled.div`
 export const ModalContainer = styled.div`
   display: ${(props) => (props.isVisible === true ? "block" : "none")};
   position: absolute;
-  right: 66px;
-  bottom: -125px;
+  right: 69px;
+  bottom: -85px;
   background-color: #fff;
   color: #000;
   padding: 10px;

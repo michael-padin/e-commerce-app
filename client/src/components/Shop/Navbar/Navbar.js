@@ -93,9 +93,6 @@ const Navbar = () => {
                     <Link to="/user/account/myaccount" style={LinkStyle}>
                       <ListItem>My account</ListItem>
                     </Link>
-                    <Link to="/user/account/mywishlist" style={LinkStyle}>
-                      <ListItem>My wishlist</ListItem>
-                    </Link>
                     <ListItem onClick={handleSubmit}>logout</ListItem>
                   </List>
                 </ModalContainer>

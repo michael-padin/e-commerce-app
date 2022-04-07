@@ -38,8 +38,6 @@ import {
   Title,
   Top,
   TopButton,
-  TopText,
-  TopTexts,
   Wrapper,
 } from "./Cart.styled.js";
 import emptyCart from "../../images/emptyCart.svg";
@@ -83,12 +81,9 @@ const Cart = () => {
           <>
           <Title></Title>
          <Top>
+           <Link to = "/">
           <TopButton>CONTINUE SHOPPING</TopButton>
-          <TopTexts>
-            <Link to="/user/account/mywishlist">
-              <TopText>Your Wishlists(0)</TopText>
-            </Link>
-          </TopTexts>
+           </Link>
          </Top>
        
           <Bottom>
