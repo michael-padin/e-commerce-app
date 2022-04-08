@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 import styled from "styled-components";
 import { mobile, tablet } from "../../../responsive.js";
 import { useDispatch } from "react-redux";
-import { fethAsyncProductsByCat } from "../../../features/productSlice.js";
+import { fetchAsyncProductsByCat } from "../../../features/productSlice.js";
 
 const Container = styled.div`
   flex: 1;
@@ -62,7 +62,7 @@ const CategoryItem = ({ item }) => {
   const dispatch = useDispatch();
 
   const handleClick = () => {
-    dispatch(fethAsyncProductsByCat(item.cat));
+    dispatch(fetchAsyncProductsByCat(item.cat));
   }
 
 

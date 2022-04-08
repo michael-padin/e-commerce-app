@@ -14,19 +14,19 @@ const rootPersistConfig ={
   blacklist: ['user']
 }
 
-const userPersistConfing = { 
+const userPersistConfig = { 
   key: 'user',
   storage: storage,
   blacklist: ['error', 'status']
 }
 
-const rootreducers = combineReducers({
+const rootReducers = combineReducers({
   cart: cartReducer,
-  user:  persistReducer(userPersistConfing, userReducer),
+  user:  persistReducer(userPersistConfig, userReducer),
   products: productReducer
 });
 
-const persistedReducer = persistReducer(rootPersistConfig, rootreducers);
+const persistedReducer = persistReducer(rootPersistConfig, rootReducers);
 
 const store = configureStore({ 
   reducer: persistedReducer,

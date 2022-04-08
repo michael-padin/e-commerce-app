@@ -27,7 +27,7 @@ const Login = () => {
           <Input  placeholder="Email"  onChange={(e) => setEmail(e.target.value)}/>
           <Input placeholder="Password" type="password" onChange={(e) => setPassword(e.target.value)}/>
           <Button disabled={isFetching} onClick={handleSubmit}>login</Button>
-          {error && <Error>{error}  </Error>}
+          {error && <Error>{error} </Error>}
           <Link to= "/"style = {linkStyle}>Forgot password?</Link>
           <Link to= "/register" style = {linkStyle}>Create a new account</Link>
         </Form>

@@ -2,11 +2,16 @@ import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import { publicRequest } from "../common/api/shopApi.js";
 
 export const register = createAsyncThunk("user/register", async(user, {rejectWithValue}) => {
+
   try {
     const {data} = await publicRequest.post("/users/register", user);    
     return (data);
   }catch (err) {
-    return rejectWithValue(err.response.data.message);  
+    let errorMessage = "Internal Server Error";
+    if (err.response) {
+      errorMessage = err.response.data.message;
+    }
+    return rejectWithValue(errorMessage); 
   }
 
 });
@@ -29,13 +34,16 @@ const userSlice = createSlice({
   reducers: {
     logoutStart: (state)  => {
       return{...state, currentUser :null, status : "", }
+    },
+    removeStatus: (state) => {
+     return {...state, status : "", error : ""} 
     }
 }, extraReducers: {
   [login.pending]: (state) => {
     return {...state, status: "pending"}
   }, 
   [login.fulfilled]: (state, {payload}) => {
-    return {...state, currentUser: payload, status: "fulfilled"}
+    return {...state, currentUser: payload, status: "fulfilled", error: ""}
   }, 
   [login.rejected]: (state, {payload}) => {
     return {...state, error: payload, status: "rejected"}
@@ -44,7 +52,7 @@ const userSlice = createSlice({
     return {...state, status: "pending"}
   }, 
   [register.fulfilled]: (state) => {
-    return {...state, status: "fulfilled"}
+    return {...state, status: "fulfilled", error: ""}
   }, 
   [register.rejected]: (state, {payload}) => {
     return {...state, error: payload, status: "rejected"}
@@ -52,5 +60,5 @@ const userSlice = createSlice({
 }
 });
 
-export const { logout } = userSlice.actions;
+export const { logoutStart, removeStatus } = userSlice.actions;
 export default userSlice.reducer;

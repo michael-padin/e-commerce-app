@@ -5,7 +5,7 @@ import { PopularTitleContainer, Title, Container, ProductsContainer,} from "./Ho
 import Newsletter from "../../components/Shop/Newsletter/Newsletter.js";
 import { useDispatch, useSelector } from "react-redux";
 import Product from "../../components/Shop/Product/Product.js";
-import {  fethAsyncProducts,  getAllProducts, } from "../../features/productSlice.js";
+import {  fetchAsyncProducts,  getAllProducts, } from "../../features/productSlice.js";
 import { useEffect } from "react";
 
 const Home = () => {
@@ -13,7 +13,7 @@ const Home = () => {
   const popularProducts = useSelector(getAllProducts);
   
   useEffect(() => {
-    dispatch(fethAsyncProducts());
+    dispatch(fetchAsyncProducts());
   }, [dispatch]);
 
   return (

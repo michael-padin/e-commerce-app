@@ -1,22 +1,22 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import { publicRequest } from "../common/api/shopApi.js";
 
-export const fethAsyncProducts = createAsyncThunk("/products/fethAsyncProducts", async () => {
+export const fetchAsyncProducts = createAsyncThunk("/products/fetchAsyncProducts", async () => {
     const { data } = await publicRequest.get("/products");
     return data;
 })
 
-export const fethAsyncProductsByCat = createAsyncThunk("/products/fethAsyncProductsByCat", async (cat) => {
+export const fetchAsyncProductsByCat = createAsyncThunk("/products/fetchAsyncProductsByCat", async (cat) => {
     const { data } = await publicRequest.get(`/products?category=${cat}`);
     return data;
 })
 
-export const fethAsyncProductsBySearch = createAsyncThunk("/products/fethAsyncProductsBySearch", async (search) => {
+export const fetchAsyncProductsBySearch = createAsyncThunk("/products/fetchAsyncProductsBySearch", async (search) => {
     const { data: {data} } = await publicRequest.get(`/products/search?searchQuery=${search}`);
     return data;
 })
 
-export const fetchAsyncSelectedProduct = createAsyncThunk("/products/fethAsyncSelectedProduct", async (id) => {
+export const fetchAsyncSelectedProduct = createAsyncThunk("/products/fetchAsyncSelectedProduct", async (id) => {
     const { data} =await publicRequest.get(`/products/find/${id}`);
     return data;
 })
@@ -39,22 +39,22 @@ const productSlice = createSlice({
       }
 }, 
 extraReducers: { 
-    [fethAsyncProducts.pending]: (state) => {
+    [fetchAsyncProducts.pending]: (state) => {
         return {...state, status: "pending"}
     },
-    [fethAsyncProducts.fulfilled]: (state, {payload}) => {
+    [fetchAsyncProducts.fulfilled]: (state, {payload}) => {
         return {...state, products: payload, status: "fulfilled"}
     },
-    [fethAsyncProducts.rejected]: (state) => {
+    [fetchAsyncProducts.rejected]: (state) => {
         return {...state, status: "rejected"}
     },
-    [fethAsyncProductsByCat.pending]: (state) => {
+    [fetchAsyncProductsByCat.pending]: (state) => {
         return {...state, status: "pending"}
     },
-    [fethAsyncProductsByCat.fulfilled]: (state, {payload}) => {
+    [fetchAsyncProductsByCat.fulfilled]: (state, {payload}) => {
         return {...state, productsByCat: payload, status: "fulfilled"}
     } ,
-    [fethAsyncProductsBySearch.fulfilled]: (state, {payload}) => {
+    [fetchAsyncProductsBySearch.fulfilled]: (state, {payload}) => {
         return {...state, productsBySearch: payload, status: "fulfilled"}
     }, 
     [fetchAsyncSelectedProduct.pending]: (state) => {

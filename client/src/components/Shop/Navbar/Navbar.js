@@ -8,9 +8,9 @@ import { Badge } from "@mui/material";
 import { Link, useHistory } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { useState } from "react";
-import { persistor } from "../../../features/store.js";
 import {AccountContainer,AccountProfile,ArrowUp,Center,Circle,Container,IconContainer,Input,Left,LinkStyle,List,ListContainer,ListItem,ListItems,Logo,LogoSidebarContainer,MenuItem,ModalContainer,Right,SearchContainer,Sidebar,Wrapper,} from "./Navbar.styled.js";
-import { fethAsyncProductsBySearch } from "../../../features/productSlice.js";
+import { fetchAsyncProductsBySearch } from "../../../features/productSlice.js";
+import { logoutStart } from "../../../features/userSlice.js";
 
 const Navbar = () => {
   const dispatch = useDispatch();
@@ -21,13 +21,12 @@ const Navbar = () => {
   const [search, setSearch] = useState("");
 
   const handleSubmit = () => {
-    persistor.purge();
-    window.location.reload();
-    history.push("/");
+    dispatch(logoutStart());
+    history.push("/login");
   };
   
   const handleSearch = () => {
-    dispatch(fethAsyncProductsBySearch(search));
+    dispatch(fetchAsyncProductsBySearch(search));
     history.push(`/products/search?searchQuery=${search}`);
     setSearch("");
   };
