@@ -69,6 +69,14 @@ export const Input = styled.input`
   })}
 `;
 
+export const InputContainer = styled.div`
+  margin: 20px 15px 0 15px;
+  border-radius: 8px;
+  width: 100%;
+  
+
+`;
+
 export const Button = styled.button`
   width: 40%;
   border: none;
@@ -115,3 +123,9 @@ export const linkStyle = {
   cursor: "pointer",
   color: "#000",
 };
+
+export const ErrorMessage = styled.div`
+  font-size: 14px;
+  color: red;
+  padding: 5px 0 0 5px;
+`;

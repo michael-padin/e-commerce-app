@@ -21,7 +21,11 @@ export const login = createAsyncThunk("user/login", async(user, {rejectWithValue
     const {data} = await publicRequest.post("/users/login", user);  
     return data;
   } catch (err) {
-    return rejectWithValue(err.response.data.message);  
+    let errorMessage = "Internal Server Error";
+    if (err.response) {
+      errorMessage = err.response.data.message;
+    }
+    return rejectWithValue(errorMessage); 
   }
 
 });
