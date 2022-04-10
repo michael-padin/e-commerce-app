@@ -12,7 +12,7 @@ router.post("/register", registerUser);
 router.post("/login", loginUser);
 
 // update user
-router.put("/:id", auth, updateUser);
+router.put("/:id",  updateUser);
 
 // delete user
 router.delete("/:id", auth, deleteUser);

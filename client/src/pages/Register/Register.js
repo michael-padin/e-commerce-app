@@ -7,7 +7,7 @@ import { Agreement, Button, Container, Form, Input, Title, Wrapper, ImageContain
 
 const initialState = { fullName: "", email: "", password: ""};
 //eslint-disable-next-line
-const validEmail = new RegExp(/^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/);
+const validEmail = new RegExp(/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/);
 const validPassword = new RegExp(/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{5,}$/);
 const validFullName = new RegExp(/^[a-zA-Z]{3,}(?: [a-zA-Z]+){0,2}$/);
 
@@ -19,11 +19,9 @@ const Register = () => {
   const [fullNameErr, setFullNameErr] = useState("");
   const [emailErr, setEmailErr] = useState("");
   const [passwordErr, setPasswordErr] = useState("");
+  const [serverErr, setServerErr] = useState("");
   const { fullName, email, password } = registerData;
   
-  
-
-
   const handleChange = (e) => {
     setRegisterData({ ...registerData, [e.target.name]: e.target.value });
     setFullNameErr("");
@@ -33,6 +31,7 @@ const Register = () => {
   
   const handleSubmit = (e) => {
     e.preventDefault();
+  
     if (fullName === "") {
       setFullNameErr("This field is required");
     } else if (!validFullName.test(fullName)) {
@@ -59,16 +58,20 @@ const Register = () => {
       dispatch(register({...registerData}));
     }
 
-      
   };
 
   useEffect(() => {
+
+    if (status === "rejected") {
+      setServerErr(error);
+    }
+
     if (status === "fulfilled") {
       history.push("/login");
     }
-
+    
     return dispatch(removeStatus())
-  },[status, history, dispatch]);
+  },[status, history, dispatch, error]);
 
 
   return (
@@ -91,7 +94,7 @@ const Register = () => {
             <Input name="password" type="password" placeholder="Password" onChange={handleChange}/>
             <ErrorMessage>{passwordErr}</ErrorMessage>
           </InputContainer>
-          <ErrorMessage>{error}</ErrorMessage>
+          <ErrorMessage>{serverErr}</ErrorMessage>
           <Agreement>
             By creating an account, I consent to the processing of my personal
             data in accordance with the <b> PRIVACY POLICY </b>

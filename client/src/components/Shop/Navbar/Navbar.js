@@ -21,6 +21,7 @@ const Navbar = () => {
   const [search, setSearch] = useState("");
 
   const handleSubmit = () => {
+    setVisible(!visible);
     dispatch(logoutStart());
     history.push("/login");
   };
@@ -37,28 +38,12 @@ const Navbar = () => {
         <Wrapper>
           <Left>
             <SearchContainer>
-              <Input
-                type="text"
-                placeholder="Search"
-                onChange={(e) => setSearch(e.target.value)}
-                value={search}
-              />
-              <SearchRounded
-                onClick={handleSearch}
-                fontSize="medium"
-                style={{ color: "gray" }}
-              />
+              <Input type="text" placeholder="Search" onChange={(e) => setSearch(e.target.value)} value={search}/>
+              <SearchRounded onClick={handleSearch} fontSize="medium" style={{ color: "gray" }}/>
             </SearchContainer>
           </Left>
           <Center>
-            <Link
-              to="/"
-              style={{
-                textDecoration: "none",
-                cursor: "pointer",
-                color: "#fff",
-              }}
-            >
+            <Link to="/" style={{ textDecoration: "none", cursor: "pointer", color: "#fff",}}>
               <Logo color="#fff">Moka</Logo>
             </Link>
           </Center>
@@ -82,11 +67,7 @@ const Navbar = () => {
                     </Circle>
                   </AccountContainer>
                 </MenuItem>
-                <ModalContainer
-                  isVisible={visible}
-                  onMouseEnter={() => setVisible(visible)}
-                  onMouseLeave={() => setVisible(!visible)}
-                >
+                <ModalContainer isVisible={visible} onMouseEnter={() => setVisible(visible)} onMouseLeave={() => setVisible(!visible)}>
                   <ArrowUp />
                   <List>
                     <Link to="/user/account/myaccount" style={LinkStyle}>
@@ -98,24 +79,10 @@ const Navbar = () => {
               </>
             ) : (
               <>
-                <Link
-                  to="/register"
-                  style={{
-                    textDecoration: "none",
-                    cursor: "pointer",
-                    color: "#fff",
-                  }}
-                >
+                <Link to="/register" style={{textDecoration: "none",cursor: "pointer",color: "#fff",}}>
                   <MenuItem> Register </MenuItem>
                 </Link>
-                <Link
-                  to="/login"
-                  style={{
-                    textDecoration: "none",
-                    cursor: "pointer",
-                    color: "#fff",
-                  }}
-                >
+                <Link to="/login" style={{ textDecoration: "none", cursor: "pointer", color: "#fff",}}>
                   <MenuItem> Sign In </MenuItem>
                 </Link>
               </>
@@ -141,14 +108,6 @@ const Navbar = () => {
                 My Account
               </ListItems>
             </Link>
-            <Link style={LinkStyle} to="/user/account/mywishlist">
-              <ListItems onClick={() => setVisible(!visible)}>
-                <IconContainer>
-                  <FavoriteBorderIcon />
-                </IconContainer>
-                My Wishlists
-              </ListItems>
-            </Link>
             <ListItems onClick={handleSubmit}>
               <IconContainer>
                 <LogoutIcon />
@@ -169,14 +128,6 @@ const Navbar = () => {
                   <PersonOutlineIcon />
                 </IconContainer>
                 Sign In
-              </ListItems>
-            </Link>
-            <Link style={LinkStyle}>
-              <ListItems>
-                <IconContainer>
-                  <FavoriteBorderIcon />
-                </IconContainer>
-                Register
               </ListItems>
             </Link>
           </ListContainer>

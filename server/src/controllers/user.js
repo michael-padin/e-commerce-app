@@ -11,9 +11,9 @@ export const registerUser = async (req, res) => {
     const existingUser = await User.findOne({  email });
     if (existingUser) return res.status(403).json({message:"User already exists."});
 
-    const hashedPassowrd = CryptoJS.AES.encrypt(password, process.env.PASS_SEC);
+    const hashedPassword = CryptoJS.AES.encrypt(password, process.env.PASS_SEC);
 
-    const result = await User.create({fullName,email,password: hashedPassowrd});
+    const result = await User.create({fullName,email,password: hashedPassword});
 
     // create a token for authentication
     const token = jwt.sign({ _id: result._id, isAdmin: result.isAdmin }, process.env.JWT_SEC,{ expiresIn: "1hr" });
@@ -30,7 +30,7 @@ export const registerUser = async (req, res) => {
 export const loginUser = async (req, res) => {
   const { email } = req.body;
 
-  try {
+  try { 
     // check if user exist
     const existingUser = await User.findOne({ email });
     if (!existingUser) return res.status(401).json({message: "User does not exist"});
@@ -39,14 +39,14 @@ export const loginUser = async (req, res) => {
     const hashedPassword = CryptoJS.AES.decrypt(existingUser.password,process.env.PASS_SEC);
 
     // compare the entered password if match the original password
-    const orignalPassword = hashedPassword.toString(CryptoJS.enc.Utf8);
-    if (orignalPassword !== req.body.password) return res.status(400).json({message:"Invalid credentials"});
+    const originalPassword = hashedPassword.toString(CryptoJS.enc.Utf8);
+    if (originalPassword !== req.body.password) return res.status(400).json({message:"Invalid credentials"});
     
     // create token for authentication
     const token = jwt.sign({ _id: existingUser._id, isAdmin: existingUser.isAdmin },process.env.JWT_SEC,{ expiresIn: "1hr" });
 
     //hide password in response
-    const { password, ...others } = existingUser._doc;
+    const { password, isAdmin, ...others } = existingUser._doc;
 
     res.status(200).json({ ...others, token });
 
@@ -58,7 +58,16 @@ export const loginUser = async (req, res) => {
 
 // UPDATE USER
 export const updateUser = async (req, res) => {
-  
+  const {email} = req.body;
+  const existingUser = await User.findOne({ email });
+
+  console.log(existingUser);
+
+  const hashedPassword = CryptoJS.AES.decrypt(existingUser.password,process.env.PASS_SEC);
+
+  const originalPassword = hashedPassword.toString(CryptoJS.enc.Utf8);
+  if (originalPassword !== req.body.currentPassword) return res.status(400).json({message:"Invalid credentials"});
+
   // if password is change then encrypt again
   if (req.body.password) {
     req.body.password = CryptoJS.AES.encrypt(
@@ -70,11 +79,11 @@ export const updateUser = async (req, res) => {
   try {
     const updatedUser = await User.findByIdAndUpdate(
       req.params.id,
-      { $set: req.body },
+      { $set: req.body},
       { new: true }
     );
 
-    res.status(200).json(updatedUser);
+    res.status(200).json({message: "Password updated!"});
   } catch (err) {
     res.status(500).json(err);
   }
