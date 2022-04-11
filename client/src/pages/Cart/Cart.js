@@ -6,41 +6,9 @@ import { useHistory } from "react-router";
 import { userRequest } from "../../common/api/shopApi.js";
 import StripeCheckout from "react-stripe-checkout";
 import DeleteOutlineOutlinedIcon from "@mui/icons-material/DeleteOutlineOutlined";
-import {
-  EmptyText,
-  Bottom,
-  Button,
-  Container,
-  Details,
-  Hr,
-  Image,
-  Info,
-  PriceDetail,
-  Product,
-  ProductAmount,
-  ProductAmountContainer,
-  EmptyCartContainer,
-  EmptyCartImageContainer,
-  EmptyCartImage,
-  ProductColor,
-  ProductDetail,
-  DeleteIconContainer,
-  ProductId,
-  ProductName,
-  ProductPrice,
-  ProductSize,
-  Summary,
-  SummaryButton,
-  SummaryItem,
-  SummaryItemPrice,
-  SummaryItemText,
-  SummaryTitle,
-  Title,
-  Top,
-  TopButton,
-  Wrapper,
-} from "./Cart.styled.js";
+import {EmptyText, Bottom, Button, Container, Details, Hr, Image, Info, PriceDetail, Product, ProductAmount, ProductAmountContainer, EmptyCartContainer, EmptyCartImageContainer, EmptyCartImage, ProductColor, ProductDetail, DeleteIconContainer, ProductId, ProductName, ProductPrice, ProductSize, Summary, SummaryButton, SummaryItem, SummaryItemPrice, SummaryItemText, SummaryTitle, Title, Top, TopButton, Wrapper} from "./Cart.styled.js";
 import emptyCart from "../../images/emptyCart.svg";
+
 const Cart = () => {
   const KEY = process.env.REACT_APP_KEY;
   const history = useHistory();
@@ -93,11 +61,7 @@ const Cart = () => {
                   <>
                     <Product key={index}>
                       <ProductDetail>
-                        <Image
-                          src={product.img}
-                          alt={product.img}
-                          key={index}
-                        />
+                        <Image src={product.img} alt={product.img} key={index}/>
                         <Details>
                           <ProductName>
                             <b>Product: </b> {product.title}
@@ -121,18 +85,10 @@ const Cart = () => {
                             <Remove style={{ height: "15px", width: "15px" }} />
                           </Button>
                         </ProductAmountContainer>
-                        <ProductPrice>
-                          ₱
-                          {product.price
-                            .toString()
-                            .replace(/\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g, ",")}
-                          .00
+                        <ProductPrice>₱{product.price.toString().replace(/\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g, ",")}.00
                         </ProductPrice>
                         <DeleteIconContainer>
-                          <DeleteOutlineOutlinedIcon
-                            fontSize="medium"
-                            style={{ color: "gray", fontSize: "30px" }}
-                          />
+                          <DeleteOutlineOutlinedIcon fontSize="medium" style={{ color: "gray", fontSize: "30px" }}/>
                         </DeleteIconContainer>
                       </PriceDetail>
                     </Product>
@@ -145,12 +101,7 @@ const Cart = () => {
               <SummaryTitle>ORDER SUMMARY</SummaryTitle>
               <SummaryItem type="total">
                 <SummaryItemText>Total</SummaryItemText>
-                <SummaryItemPrice>
-                  ₱
-                  {cart.totalPrice
-                    .toString()
-                    .replace(/\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g, ",")}
-                  .00
+                <SummaryItemPrice> ₱ {cart.totalPrice.toString().replace(/\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g, ",")}.00
                 </SummaryItemPrice>
               </SummaryItem>
               {user ? (

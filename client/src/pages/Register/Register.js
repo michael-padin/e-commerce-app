@@ -70,7 +70,9 @@ const Register = () => {
       history.push("/login");
     }
     
-    return dispatch(removeStatus())
+    return () =>{
+      dispatch(removeStatus())
+    }
   },[status, history, dispatch, error]);
 
 

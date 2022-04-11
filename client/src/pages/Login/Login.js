@@ -47,7 +47,7 @@ const Login = () => {
     } 
     
     
-    return  dispatch(removeStatus());
+    return  () => {dispatch(removeStatus());}
 
   },[dispatch, status, isFetching, error]);
 

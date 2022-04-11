@@ -1,7 +1,6 @@
 import SearchRounded from "@mui/icons-material/SearchRounded";
 import ShoppingCartOutlinedIcon from "@mui/icons-material/ShoppingCartOutlined";
 import PersonOutlineIcon from "@mui/icons-material/PersonOutline";
-import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
 import KeyboardBackspaceOutlinedIcon from "@mui/icons-material/KeyboardBackspaceOutlined";
 import LogoutIcon from "@mui/icons-material/Logout";
 import { Badge } from "@mui/material";

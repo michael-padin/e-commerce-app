@@ -45,7 +45,7 @@ const UserProfile = () => {
     setServerErr(error);
    }
 
-   return dispatch(removeStatus());
+   return () => {dispatch(removeStatus());}
   },[status, dispatch, error]);
 
   return (
