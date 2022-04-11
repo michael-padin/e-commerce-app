@@ -8,7 +8,6 @@ export const Container = styled.div`
   background-color: #fff;
   display: flex;
   align-items: center;
-  background-size: cover;
   ${mobile({ padding: "20px" })}
 `;
 
@@ -18,20 +17,20 @@ export const ImageContainer = styled.div`
   height: 90vh;
   width: 50%;
   ${mobile({ display: "none" })}
-
 `;
 export const Image = styled.img`
   width: 100%;
 `;
 
 export const Wrapper = styled.div`
-  border-radius: 10px;
-  padding: 20px;
-  background-color: #ffff;
-  box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
-  flex-direction: column;
   margin: auto;
+  border-radius: 5px;
+  padding: 20px;
   width: 30%;
+  box-shadow: rgba(9, 30, 66, 0.25) 0px 1px 1px,
+    rgba(9, 30, 66, 0.13) 0px 0px 1px 1px;
+  background-color: white;
+  flex-direction: column;
   ${mobile({ width: "100%" })}
 `;
 export const Title = styled.h1`
@@ -40,19 +39,25 @@ export const Title = styled.h1`
 `;
 export const Form = styled.form`
   display: flex;
+  flex-wrap: wrap;
   padding: 20px;
-  flex-direction: column;
 `;
+
+export const InputContainer = styled.div`
+  margin: 20px 15px 0 15px;
+  border-radius: 8px;
+  width: 100%;
+`;
+
 export const Input = styled.input`
   font-size: 18px;
-  border: 1px solid lightgray;
-  min-width: 40%;
-  margin: 10px 0;
   padding: 15px;
+  border: 1px solid lightgray;
   border-radius: 8px;
+  width: 100%;
 
   &:focus {
-    outline: 2px solid #b5838d;
+    outline: 1px solid #b5838d;
     border: none;
   }
   ${mobile({
@@ -69,12 +74,9 @@ export const Input = styled.input`
   })}
 `;
 
-export const InputContainer = styled.div`
-  margin: 20px 15px 0 15px;
-  border-radius: 8px;
-  width: 100%;
-  
-
+export const Agreement = styled.span`
+  font-size: 12px;
+  margin: 20px 0;
 `;
 
 export const Button = styled.button`
@@ -86,35 +88,18 @@ export const Button = styled.button`
   transition: 0.3s;
   cursor: pointer;
   font-size: 20px;
-  margin: 10px 0;
-  color: #fff;
+  color: white;
 
   &:hover {
     background-color: #ffb8c6;
     color: white;
-
-    &:disabled {
-      color: #06d6a0;
-      cursor: not-allowed;
-    }
   }
   ${mobile({
-    margin: "20px 0 0 0",
+    margin: "10px 0 0 0",
     padding: "10px",
     fontSize: "15px",
     minWidth: "100%",
   })}
-  ${tablet({
-    margin: "20px 0 0 0",
-    padding: "10px",
-    fontSize: "15px",
-    minWidth: "100%",
-  })}
-`;
-
-export const Error = styled.div`
-  color: red;
-  padding: 10px;
 `;
 
 export const linkStyle = {
@@ -128,4 +113,18 @@ export const ErrorMessage = styled.div`
   font-size: 14px;
   color: red;
   padding: 5px 0 0 5px;
+`;
+export const BottomContainer = styled.div`
+  margin: 20px 0;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+`;
+
+export const LinkWrapper = styled.div`
+  margin: 15px 0 0 0;
+`;
+
+export const LinkContainer = styled.div`
+  font-size: 14px;
 `;

@@ -10,9 +10,9 @@ import { mobile } from "../../../responsive.js";
 
 const Container = styled.div`
   display: flex;
-  background-color: #b5838d;
+  background-color: #fbfbfb;
+  color: rgba(0,0,0,.54);
   ${mobile({ flexDirection: "column" })}
-  color: #fff;
   text-align: left;
 `;
 const Left = styled.div`
@@ -76,10 +76,6 @@ const ContactItem = styled.div`
   align-items: center;
 `;
 
-const Payment = styled.img`
-  width: 50%;
-`;
-
 const Footer = () => {
   return (
     <Container>
@@ -124,7 +120,7 @@ const Footer = () => {
         <ContactItem>
           <EmailOutlined style={{ marginRight: "10px" }} /> moka@gmail.com
         </ContactItem>
-        <Payment src="https://i.ibb.co/Qfvn4z6/payment.png" />
+       
       </Right>
     </Container>
   );

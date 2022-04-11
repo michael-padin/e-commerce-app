@@ -12,7 +12,7 @@ const validPassword = new RegExp(/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{5,}$
 const validFullName = new RegExp(/^[a-zA-Z]{3,}(?: [a-zA-Z]+){0,2}$/);
 
 const Register = () => {
-  const { status, error } = useSelector((state) => state.user);
+  const { status, message } = useSelector((state) => state.user);
   const history = useHistory();
   const dispatch = useDispatch();
   const [registerData, setRegisterData] = useState(initialState);
@@ -63,8 +63,8 @@ const Register = () => {
   useEffect(() => {
 
     if (status === "rejected") {
-      setServerErr(error);
-    }
+      setServerErr(message);
+    } 
 
     if (status === "fulfilled") {
       history.push("/login");
@@ -73,7 +73,7 @@ const Register = () => {
     return () =>{
       dispatch(removeStatus())
     }
-  },[status, history, dispatch, error]);
+  },[status, history, dispatch, message]);
 
 
   return (
@@ -94,14 +94,13 @@ const Register = () => {
           </InputContainer>
           <InputContainer>
             <Input name="password" type="password" placeholder="Password" onChange={handleChange}/>
-            <ErrorMessage>{passwordErr}</ErrorMessage>
+            <ErrorMessage>{passwordErr ? passwordErr: serverErr}</ErrorMessage>
           </InputContainer>
-          <ErrorMessage>{serverErr}</ErrorMessage>
           <Agreement>
             By creating an account, I consent to the processing of my personal
             data in accordance with the <b> PRIVACY POLICY </b>
           </Agreement>
-          <Button  type = "submit" >Create</Button>
+          <Button>Create</Button>
         </Form>
       </Wrapper>
     </Container>

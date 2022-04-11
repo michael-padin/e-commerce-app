@@ -8,7 +8,7 @@ const Product = ({ item }) => {
   return (
     <Wrapper>
       <Container>
-        <Image src={item.img} />
+        <Image src={item.img} alt = {item.title}/>
         <Info>
           <Icon>
           <Link to = {`/product/${item._id}`} style = {styledLink}>

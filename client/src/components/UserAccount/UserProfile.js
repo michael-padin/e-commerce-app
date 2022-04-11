@@ -1,6 +1,8 @@
 import { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import {UserProfileContainer, Top, Title, SubHeading, InfoParent, Form, InfoSubParent, LabelContainer, Label, InputContainer, Input, Button, ErrorMessage} from "./UserProfile.styled.js";
+import LoadingOverlay from "react-loading-overlay";
+import CloseIcon from '@mui/icons-material/Close';
+import {UserProfileContainer, Top, Title, SubHeading, InfoParent, Form, InfoSubParent, LabelContainer, Label, InputContainer, Input, Button, ErrorMessage, LoadingBackground, BackgroundContainer, ModalContainer, Modal, CloseIconContainer,} from "./UserProfile.styled.js";
 import { changeUserPass, removeStatus } from "../../features/userSlice.js";
 
 const initialState = {currentPassword: "", password: "", confirmNewPassword: ""};
@@ -13,8 +15,9 @@ const UserProfile = () => {
   const [serverErr, setServerErr] = useState("");
   const [confirmPasswordErr, setConfirmPasswordErr] = useState("");
   const [formData, setFormData] = useState(initialState);
+  const [isStarting, setIsStarting] = useState(false);
   const {currentPassword, password, confirmNewPassword} = formData;
-  const {currentUser , status, error} = useSelector((state) => state.user);
+  const {currentUser , status, message} = useSelector((state) => state.user);
   const {email, _id, fullName} = currentUser;
 
   const handleChange = (e) => {
@@ -36,19 +39,50 @@ const UserProfile = () => {
      setConfirmPasswordErr("Password not match");
     } else {
       dispatch(changeUserPass({password, email, _id, currentPassword}));
+      setIsStarting(true);
+      setFormData({currentPassword: "", password: "", confirmNewPassword: ""});
     }
   }
 
+  const handleClose =  () => {
 
+  setIsStarting(false);
+   dispatch(removeStatus())
+
+  }
   useEffect(() => {
-   if (status === "rejected") {
-    setServerErr(error);
+   if (status === "rejected" || status === "fulfilled") {
+    setServerErr(message);
    }
 
-   return () => {dispatch(removeStatus());}
-  },[status, dispatch, error]);
+   return () => {}
+
+  },[status, message]);
 
   return (
+    <>
+      <BackgroundContainer isStarting = {isStarting} onClick = {handleClose}>
+      {
+        status === 'pending' ?
+        <LoadingBackground>
+      <LoadingOverlay
+          active={true}// spinner={<BounceLoader />}
+          spinner={true}
+          text="Loading ..."
+          >
+          {/* <p>Some content or children or something.</p> */}
+        </LoadingOverlay>
+      </LoadingBackground> :
+        <ModalContainer >
+          <CloseIconContainer onClick = {handleClose}>
+            <CloseIcon/>
+          </CloseIconContainer>
+        <Modal>
+          {serverErr}
+        </Modal>
+      </ModalContainer>
+          }
+          </BackgroundContainer>
     <UserProfileContainer>
       <Top>
         <Title>My Profile</Title>
@@ -80,8 +114,8 @@ const UserProfile = () => {
               <Label>Current Password</Label>
             </LabelContainer>
             <InputContainer>
-              <Input name = "currentPassword" type="text" onChange = {handleChange} />
-              <ErrorMessage>{currentPasswordErr ? currentPasswordErr: serverErr }</ErrorMessage>
+              <Input name = "currentPassword" type="text" onChange = {handleChange} value = {currentPassword}/>
+              <ErrorMessage>{currentPasswordErr}</ErrorMessage>
             </InputContainer>
           </InfoSubParent>
           <InfoSubParent>
@@ -89,7 +123,7 @@ const UserProfile = () => {
               <Label>New Password</Label>
             </LabelContainer>
             <InputContainer>
-              <Input name = "password" type="text" onChange = {handleChange} />
+              <Input name = "password" type="text" onChange = {handleChange}  value = {password}/>
               <ErrorMessage>{newPasswordErr}</ErrorMessage>
             </InputContainer>
           </InfoSubParent>
@@ -98,7 +132,7 @@ const UserProfile = () => {
               <Label>Confirm Password</Label>
             </LabelContainer>
             <InputContainer>
-              <Input name = "confirmNewPassword" type="text" onChange = {handleChange} />
+              <Input name = "confirmNewPassword" type="text" onChange = {handleChange}  value = {confirmNewPassword}/>
               <ErrorMessage>{confirmPasswordErr}</ErrorMessage>
             </InputContainer>
           </InfoSubParent>
@@ -110,7 +144,8 @@ const UserProfile = () => {
           </InfoSubParent>
         </Form>
       </InfoParent>
-    </UserProfileContainer>
+    </UserProfileContainer> 
+</>
   );
 };
 

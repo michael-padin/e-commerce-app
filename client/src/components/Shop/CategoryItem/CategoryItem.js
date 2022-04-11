@@ -70,7 +70,7 @@ const CategoryItem = ({ item }) => {
     <Container onClick = {handleClick}>
         <Link to={`products/${item.cat}`}>  
       <Overlay/>
-          <Image src={item.img} />
+          <Image src={item.img} alt = {item.title}/>
           <Info>
             <Title>{item.title}</Title>
           </Info>

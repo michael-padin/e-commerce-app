@@ -55,7 +55,7 @@ const Product = () => {
         </> : 
         <>
         <ImgContainer>
-          <Image src={selectedProduct.img} />
+          <Image src={selectedProduct.img} alt = {selectedProduct.title}/>
         </ImgContainer>
         <InfoContainer>
           <Title>{selectedProduct.title}</Title>

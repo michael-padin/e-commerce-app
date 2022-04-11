@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import {Button,Container,Error,Form,Input,linkStyle,Title,Wrapper, ImageContainer,Image, InputContainer, ErrorMessage} from "./Login.styled.js";
+import {Button,Container,Form,Input,linkStyle,Title,Wrapper, ImageContainer,Image, InputContainer, ErrorMessage, LinkContainer, BottomContainer, LinkWrapper} from "./Login.styled.js";
 import { Link } from "react-router-dom";
 import LoginImage from "../../images/login.png";
 import { login, removeStatus} from "../../features/userSlice.js";
@@ -9,7 +9,7 @@ const initialState = {email: "", password: ""};
 
 const Login = () => {
   const dispatch = useDispatch();
-  const { error, status } = useSelector((state) => state.user);
+  const { message, status } = useSelector((state) => state.user);
   const [formData, setFormData]  = useState(initialState);
   const [emailErr , setEmailErr] = useState("");
   const [passwordErr, setPasswordErr] = useState("");
@@ -43,13 +43,13 @@ const Login = () => {
 
     if (status === "rejected") {
       setIsFetching(false); 
-      setServerErr(error);
+      setServerErr(message);
     } 
     
     
     return  () => {dispatch(removeStatus());}
 
-  },[dispatch, status, isFetching, error]);
+  },[dispatch, status, isFetching, message]);
 
   return (
     <Container>
@@ -65,12 +65,19 @@ const Login = () => {
           </InputContainer>
           <InputContainer>
           <Input name = "password" placeholder="Password" type="password"  onChange={handleChange}/>
-          <ErrorMessage>{passwordErr}</ErrorMessage>
+          <ErrorMessage>{passwordErr ? passwordErr : serverErr}</ErrorMessage>
           </InputContainer>
-          <Button disabled={isFetching} >login</Button>
-          <Error>{serverErr} </Error>
-          <Link to= "/"style = {linkStyle}>Forgot password?</Link>
-          <Link to= "/register" style = {linkStyle}>Create a new account</Link>
+          <BottomContainer>
+          <Button disabled = {isFetching}>Login</Button>
+          <LinkWrapper>
+          <LinkContainer> 
+           <Link to= "/"style = {linkStyle}>Forgot password?</Link>
+          </LinkContainer>
+          <LinkContainer>
+            <Link to= "/register" style = {linkStyle}>Create a new account</Link>
+          </LinkContainer>
+          </LinkWrapper>
+          </BottomContainer>
         </Form>
       </Wrapper>
     </Container>

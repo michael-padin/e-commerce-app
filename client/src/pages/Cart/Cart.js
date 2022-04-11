@@ -58,12 +58,12 @@ const Cart = () => {
             <Info>
               {cart.products.map((product, index) => {
                 return (
-                  <>
-                    <Product key={index}>
+                  <div key={index}>
+                    <Product >
                       <ProductDetail>
-                        <Image src={product.img} alt={product.img} key={index}/>
-                        <Details>
-                          <ProductName>
+                        <Image src={product.img} alt={product.img}/>
+                        <Details >
+                          <ProductName >
                             <b>Product: </b> {product.title}
                           </ProductName>
                           <ProductId>
@@ -75,7 +75,7 @@ const Cart = () => {
                           </ProductSize>
                         </Details>
                       </ProductDetail>
-                      <PriceDetail>
+                      <PriceDetail >
                         <ProductAmountContainer>
                           <Button>
                             <Add style={{ height: "15px", width: "15px" }} />
@@ -93,7 +93,7 @@ const Cart = () => {
                       </PriceDetail>
                     </Product>
                     <Hr />
-                  </>
+                  </div>
                 );
               })}
             </Info>
@@ -114,6 +114,7 @@ const Cart = () => {
                   amount={cart.totalPrice}
                   token={onToken}
                   stripeKey={KEY}
+                  alt={"shop"}
                 >
                   <SummaryButton>CHECKOUT</SummaryButton>
                 </StripeCheckout>

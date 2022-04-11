@@ -120,7 +120,7 @@ const Products = ({ cat, filters, sort }) => {
       ) : (
           <NoFoundContainer>
             <NoFoundImageContainer>
-              <NoFoundImage src={noFoundImage} />
+              <NoFoundImage src={noFoundImage} alt  = "no Found Image"/>
             </NoFoundImageContainer>
             <NoFoundTextContainer>
               <NoFoundText>No results found</NoFoundText>

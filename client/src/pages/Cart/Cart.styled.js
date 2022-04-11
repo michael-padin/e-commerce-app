@@ -186,8 +186,7 @@ export const ProductSize = styled.span``;
 export const Summary = styled.div`
   position: sticky;
   border-radius: 10px;
-  border: 0.5px solid lightgray;
-  box-shadow: rgba(0, 0, 0, 0.1) 0px 10px 50px;
+  box-shadow: rgba(0, 0, 0, 0.05) 0px 0px 0px 1px, rgb(209, 213, 219) 0px 0px 0px 1px inset;
   padding: 20px;
   margin-top: 50px;
   bottom: 0;

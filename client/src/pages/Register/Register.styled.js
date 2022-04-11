@@ -27,7 +27,7 @@ export const Wrapper = styled.div`
   border-radius: 5px;
   padding: 20px;
   width: 30%;
-  box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+  box-shadow: rgba(9, 30, 66, 0.25) 0px 1px 1px, rgba(9, 30, 66, 0.13) 0px 0px 1px 1px;
   background-color: white;
   flex-direction: column;
   ${mobile({ width: "100%" })}
@@ -46,7 +46,6 @@ export const InputContainer = styled.div`
   margin: 20px 15px 0 15px;
   border-radius: 8px;
   width: 100%;
-  
 
 `;
 

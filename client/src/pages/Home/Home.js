@@ -2,7 +2,6 @@ import React from "react";
 import Carousel from "../../components/Shop/Carousel/Carousel.js";
 import Categories from "../../components/Shop/Categories/Categories.js";
 import { PopularTitleContainer, Title, Container, ProductsContainer,} from "./Home.styled.js";
-import Newsletter from "../../components/Shop/Newsletter/Newsletter.js";
 import { useDispatch, useSelector } from "react-redux";
 import Product from "../../components/Shop/Product/Product.js";
 import {  fetchAsyncProducts,  getAllProducts, } from "../../features/productSlice.js";
@@ -33,7 +32,6 @@ const Home = () => {
           ))}
         </ProductsContainer>
       </Container>
-      <Newsletter />
     </>
   );
 };

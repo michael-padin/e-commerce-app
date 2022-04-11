@@ -31,10 +31,9 @@ export const login = createAsyncThunk("user/login", async(user, {rejectWithValue
 });
 
 export const changeUserPass = createAsyncThunk("user/changePassword", async(userData, {rejectWithValue}) => {  
-  console.log(userData._id);
   try {
     const {data} = await publicRequest.put(`/users/${userData._id}`, userData);  
-    console.log(data); 
+    return data.message; 
   } catch (err) {
     let errorMessage = "Internal Server Error";
     if (err.response) {
@@ -45,7 +44,7 @@ export const changeUserPass = createAsyncThunk("user/changePassword", async(user
 
 });
 
-const initialState = { currentUser: null, status: "", error: "" };
+const initialState = { currentUser: null, status: "", message: "" };
 
 const userSlice = createSlice({
   name: "user",
@@ -55,35 +54,35 @@ const userSlice = createSlice({
       return{...state, currentUser :null, status : "", }
     },
     removeStatus: (state) => {
-     return {...state, status : "", error : ""} 
+     return {...state, status : "", message : ""} 
     }
 }, extraReducers: {
   [login.pending]: (state) => {
     return {...state, status: "pending"}
   }, 
   [login.fulfilled]: (state, {payload}) => {
-    return {...state, currentUser: payload, status: "fulfilled", error: ""}
+    return {...state, currentUser: payload, status: "fulfilled", message: ""}
   }, 
   [login.rejected]: (state, {payload}) => {
-    return {...state, error: payload, status: "rejected"}
+    return {...state, message: payload, status: "rejected"}
   }, 
   [register.pending]: (state) => {
     return {...state, status: "pending"}
   }, 
   [register.fulfilled]: (state) => {
-    return {...state, status: "fulfilled", error: ""}
+    return {...state, status: "fulfilled", message: ""}
   }, 
   [register.rejected]: (state, {payload}) => {
-    return {...state, error: payload, status: "rejected"}
+    return {...state, message: payload, status: "rejected"}
   },
-  [changeUserPass.pending]: (state, {payload}) => {
-    return {...state, error: payload, status: "pending"}
+  [changeUserPass.pending]: (state) => {
+    return {...state,  status: "pending"}
   },
   [changeUserPass.fulfilled]: (state, {payload}) => {
-    return {...state, error: payload, status: "fulfilled"}
+    return {...state, message: payload, status: "fulfilled"}
   },
   [changeUserPass.rejected]: (state, {payload}) => {
-    return {...state, error: payload, status: "rejected"}
+    return {...state, message: payload, status: "rejected"}
   },
 }
 });

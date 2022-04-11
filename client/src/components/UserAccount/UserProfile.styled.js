@@ -70,3 +70,53 @@ export const ErrorMessage = styled.div`
   color: red;
   padding: 5px 0 0 5px;
 `;
+
+export const BackgroundContainer = styled.div`
+  display: ${({isStarting}) => isStarting === true ? 'block' : 'none'} ;
+  position: fixed; /* Stay in place */
+  overflow: hidden; /* Enable scroll if needed */
+  z-index: 999; /* Sit on top */
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 100%; /* Full width */
+  height: 100%;
+  background-color: rgb(0, 0, 0); /* Fallback color */
+  background-color: rgba(0, 0, 0, 0.4); /* Black w/ opacity */
+`;
+
+export const LoadingBackground = styled.div`
+  position: absolute;
+  top: 50%;
+  left: 0;
+  right: 0;
+`;
+
+export const ModalContainer = styled.div`
+position: relative;
+transform:scaleY(.01) scaleX(0);
+  border-radius: 10px;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: 250px;
+  height: 100px;
+  background-color: #ffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+`;
+export const Modal = styled.div``;
+
+export const CloseIconContainer = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  top: 5px;
+  right: 5px;
+  background-color: #E4E6EB;
+  border-radius: 50%;
+`;
+

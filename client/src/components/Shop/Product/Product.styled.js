@@ -6,7 +6,7 @@ export const Wrapper = styled.div`
   justify-content: center;
   display: flex;
   border-radius: 15px;
-  box-shadow: rgba(17, 12, 46, 0.15) 0px 48px 100px 0px;
+  box-shadow: rgba(0, 0, 0, 0.05) 0px 0px 0px 1px, rgb(209, 213, 219) 0px 0px 0px 1px inset;
   background-color: #ffff;
 `;
 export const Container = styled.div`
