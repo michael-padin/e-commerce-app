@@ -3,7 +3,7 @@ import { mobile } from "../../responsive.js";
 
 export const UserProfileContainer = styled.div`
   border-radius: 10px;
-  box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+  box-shadow: rgba(9, 30, 66, 0.25) 0px 1px 1px, rgba(9, 30, 66, 0.13) 0px 0px 1px 1px;
   width: 100%;
   height: 100%;
   min-height: 760px;
@@ -53,6 +53,11 @@ export const Input = styled.input`
   width: 100%;
   border: 1px solid #cccc;
   border-radius: 5px;
+
+  &:focus {
+    outline: 1px solid #b5838d;
+    border: none;
+  }
 `;
 
 export const Button = styled.button`

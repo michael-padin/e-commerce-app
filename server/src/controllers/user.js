@@ -61,8 +61,6 @@ export const updateUser = async (req, res) => {
   const {email} = req.body;
   const existingUser = await User.findOne({ email });
 
-  console.log(existingUser);
-
   const hashedPassword = CryptoJS.AES.decrypt(existingUser.password,process.env.PASS_SEC);
 
   const originalPassword = hashedPassword.toString(CryptoJS.enc.Utf8);

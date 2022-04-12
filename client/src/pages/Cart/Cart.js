@@ -6,7 +6,7 @@ import { useHistory } from "react-router";
 import { userRequest } from "../../common/api/shopApi.js";
 import StripeCheckout from "react-stripe-checkout";
 import DeleteOutlineOutlinedIcon from "@mui/icons-material/DeleteOutlineOutlined";
-import {EmptyText, Bottom, Button, Container, Details, Hr, Image, Info, PriceDetail, Product, ProductAmount, ProductAmountContainer, EmptyCartContainer, EmptyCartImageContainer, EmptyCartImage, ProductColor, ProductDetail, DeleteIconContainer, ProductId, ProductName, ProductPrice, ProductSize, Summary, SummaryButton, SummaryItem, SummaryItemPrice, SummaryItemText, SummaryTitle, Title, Top, TopButton, Wrapper} from "./Cart.styled.js";
+import {EmptyText, Bottom, Button, Container, Details, Hr, Image, Info, PriceDetail, Product, ProductAmount, ProductAmountContainer, EmptyCartContainer, EmptyCartImageContainer, EmptyCartImage, ProductColor, ProductDetail, DeleteIconContainer, ProductName, ProductPrice, ProductSize, Summary, SummaryButton, SummaryItem, SummaryItemPrice, SummaryItemText, SummaryTitle, Title, Top, TopButton, Wrapper, ProductColorContainer} from "./Cart.styled.js";
 import emptyCart from "../../images/emptyCart.svg";
 
 const Cart = () => {
@@ -15,6 +15,10 @@ const Cart = () => {
   const cart = useSelector((state) => state.cart);
   const user = useSelector((state) => state.user.currentUser);
   const [stripeToken, setStripeToken] = useState(null);
+
+
+  console.log(cart);
+
 
   const onToken = (token) => {
     setStripeToken(token);
@@ -47,7 +51,6 @@ const Cart = () => {
           </EmptyCartContainer>
         ) : (
           <>
-          <Title></Title>
          <Top>
            <Link to = "/">
           <TopButton>CONTINUE SHOPPING</TopButton>
@@ -66,10 +69,9 @@ const Cart = () => {
                           <ProductName >
                             <b>Product: </b> {product.title}
                           </ProductName>
-                          <ProductId>
-                            <b>Id: </b> {product._id}
-                          </ProductId>
-                          <ProductColor color={product.color} />
+                          <ProductColorContainer>
+                            <b>Color: </b>   <ProductColor color={product.color} />
+                          </ProductColorContainer>
                           <ProductSize>
                             <b>Size:</b> {product.size}
                           </ProductSize>
@@ -108,7 +110,7 @@ const Cart = () => {
                 <StripeCheckout
                   image="https://img.icons8.com/fluency/48/000000/shop.png"
                   description={`Your total is ₱${cart.totalPrice}`}
-                  name="Shopshop"
+                  name="Moka"
                   billingAddress
                   shippingAddress
                   amount={cart.totalPrice}

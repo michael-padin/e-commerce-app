@@ -114,7 +114,7 @@ const UserProfile = () => {
               <Label>Current Password</Label>
             </LabelContainer>
             <InputContainer>
-              <Input name = "currentPassword" type="text" onChange = {handleChange} value = {currentPassword}/>
+              <Input name = "currentPassword" type="password" onChange = {handleChange} value = {currentPassword}/>
               <ErrorMessage>{currentPasswordErr}</ErrorMessage>
             </InputContainer>
           </InfoSubParent>
@@ -123,7 +123,7 @@ const UserProfile = () => {
               <Label>New Password</Label>
             </LabelContainer>
             <InputContainer>
-              <Input name = "password" type="text" onChange = {handleChange}  value = {password}/>
+              <Input name = "password" type="password" onChange = {handleChange}  value = {password}/>
               <ErrorMessage>{newPasswordErr}</ErrorMessage>
             </InputContainer>
           </InfoSubParent>
@@ -132,7 +132,7 @@ const UserProfile = () => {
               <Label>Confirm Password</Label>
             </LabelContainer>
             <InputContainer>
-              <Input name = "confirmNewPassword" type="text" onChange = {handleChange}  value = {confirmNewPassword}/>
+              <Input name = "confirmNewPassword" type="password" onChange = {handleChange}  value = {confirmNewPassword}/>
               <ErrorMessage>{confirmPasswordErr}</ErrorMessage>
             </InputContainer>
           </InfoSubParent>

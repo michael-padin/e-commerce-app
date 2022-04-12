@@ -88,7 +88,7 @@ const Footer = () => {
           dignissimos. Harum!
         </Description>
         <SocialContainer>
-          <SocialIcon color="#1877F2">
+          <SocialIcon color="#1 877F2">
             <FacebookTwoTone />
           </SocialIcon>
           <SocialIcon color="radial-gradient(circle at 30% 107%, #fdf497 0%, #fdf497 5%, #fd5949 45%,#d6249f 60%,#285AEB 90%);">
@@ -104,12 +104,8 @@ const Footer = () => {
         <List>
           <ListItem>Home</ListItem>
           <ListItem>Cart</ListItem>
-          <ListItem>Man Fashion</ListItem>
           <ListItem> Woman Fashion</ListItem>
           <ListItem> My Account</ListItem>
-          <ListItem> Order Tracking</ListItem>
-          <ListItem> Wishlist</ListItem>
-          <ListItem> Terms </ListItem>
         </List>
       </Center>
       <Right>

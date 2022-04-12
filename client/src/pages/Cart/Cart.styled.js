@@ -174,11 +174,18 @@ export const Details = styled.div`
 `;
 export const ProductName = styled.span``;
 export const ProductId = styled.span``;
+export const ProductColorContainer= styled.div`
+  display: flex;
+  flex-direction: row;
+
+`
 export const ProductColor = styled.div`
+  margin-left: 10px;
   width: 20px;
   height: 20px;
   border-radius: 50%;
-  background-color: ${(props) => props.color};
+  border: 1px solid gray;
+  background-color: ${({color}) => color};
 `;
 
 export const ProductSize = styled.span``;
@@ -191,7 +198,7 @@ export const Summary = styled.div`
   margin-top: 50px;
   bottom: 0;
   background-color: #fff;
-  ${mobile({position: "relative", margin: "0"})}
+  ${mobile({ margin: "0"})}
 `;
 
 export const SummaryTitle = styled.h1`
