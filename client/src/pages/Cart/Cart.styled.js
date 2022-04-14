@@ -107,7 +107,7 @@ export const PriceDetail = styled.div`
   })}
 `;
 
-export const ProductAmountContainer = styled.div`
+export const ProductQuantityContainer = styled.div`
   display: flex;
   align-items: center;
   margin-bottom: 20px;
@@ -143,8 +143,9 @@ export const Button = styled.button`
 
 export const ProductPrice = styled.div`
   font-size: 30px;
+
   font-weight: 200;
-  ${mobile({ marginBottom: "0" })}
+  ${mobile({ marginBottom: "0", fontSize: "20px" })}
 `;
 
 export const DeleteIconContainer = styled.div`

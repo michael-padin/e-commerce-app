@@ -9,7 +9,7 @@ const Container = styled.div`
   margin: 10px;
   height: 70vh;
   position: relative;
-  border-radius: 15px;
+  border-radius: 14px;
   overflow: hidden;
   transition: transform .2s;
   ${mobile({ height: "auto" })}
@@ -32,7 +32,7 @@ const Overlay = styled.div`
 const Image = styled.img`
   height: 100%;
   width: 100%;
-  border-radius: 15px;
+  border-radius: 14px;
   object-fit: cover;
   ${mobile({ height: "50vh" })}
   ${tablet({ height: "50vh" })}

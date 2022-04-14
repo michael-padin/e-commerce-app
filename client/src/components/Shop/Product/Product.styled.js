@@ -5,7 +5,7 @@ export const Wrapper = styled.div`
   flex-direction: column;
   justify-content: center;
   display: flex;
-  border-radius: 15px;
+  border-radius: 14px;
   box-shadow: rgba(0, 0, 0, 0.05) 0px 0px 0px 1px, rgb(209, 213, 219) 0px 0px 0px 1px inset;
   background-color: #ffff;
 `;
@@ -23,8 +23,8 @@ export const Image = styled.img`
   object-fit: cover;
   width: 100%;
   height: 100%;
-  border-top-left-radius: 15px;
-  border-top-right-radius: 15px;
+  border-top-left-radius: 14px;
+  border-top-right-radius: 14px;
   z-index: 2;
 `;
 export const Info = styled.div`
@@ -35,9 +35,9 @@ export const Info = styled.div`
   top: 0;
   left: 0;
   z-index: 3;
-  border-top-left-radius: 15px;
+  border-top-left-radius:  14px;
   background-color: gray;
-  border-top-right-radius: 15px;
+  border-top-right-radius:  14px;
   display: flex;
   align-items: center;
   background-color: rgba(0, 0, 0, 0.2);
@@ -85,7 +85,7 @@ export const Price = styled.p``;
 
 
 export const styledLink  = {
-  margin: "5px 0",
+  margin:  "5px 0",
   textDecoration: "none",
   cursor: "pointer",
   color: "#000",

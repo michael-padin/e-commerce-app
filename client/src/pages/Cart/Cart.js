@@ -6,7 +6,7 @@ import { useHistory } from "react-router";
 import { userRequest } from "../../common/api/shopApi.js";
 import StripeCheckout from "react-stripe-checkout";
 import DeleteOutlineOutlinedIcon from "@mui/icons-material/DeleteOutlineOutlined";
-import {EmptyText, Bottom, Button, Container, Details, Hr, Image, Info, PriceDetail, Product, ProductAmount, ProductAmountContainer, EmptyCartContainer, EmptyCartImageContainer, EmptyCartImage, ProductColor, ProductDetail, DeleteIconContainer, ProductName, ProductPrice, ProductSize, Summary, SummaryButton, SummaryItem, SummaryItemPrice, SummaryItemText, SummaryTitle, Title, Top, TopButton, Wrapper, ProductColorContainer} from "./Cart.styled.js";
+import {EmptyText, Bottom, Button, Container, Details, Hr, Image, Info, PriceDetail, Product, ProductAmount, ProductAmountContainer, EmptyCartContainer, EmptyCartImageContainer, EmptyCartImage, ProductColor, ProductDetail, DeleteIconContainer, ProductName, ProductPrice, ProductSize, Summary, SummaryButton, SummaryItem, SummaryItemPrice, SummaryItemText, SummaryTitle, Top, TopButton, Wrapper, ProductColorContainer, ProductQuantityContainer} from "./Cart.styled.js";
 import emptyCart from "../../images/emptyCart.svg";
 
 const Cart = () => {
@@ -16,15 +16,12 @@ const Cart = () => {
   const user = useSelector((state) => state.user.currentUser);
   const [stripeToken, setStripeToken] = useState(null);
 
-
-  console.log(cart);
-
-
   const onToken = (token) => {
     setStripeToken(token);
   };
 
   useEffect(() => {
+    console.log(cart);
     const makeRequest = async () => {
       const res = await userRequest.post("/checkout/payment", {
         tokenId: stripeToken.id,
@@ -33,7 +30,7 @@ const Cart = () => {
       history.push("/success", {
         stripeData: res.data,
         products: cart,
-      });
+      }); 
     };
     stripeToken && makeRequest();
   }, [stripeToken, cart, history]);
@@ -75,10 +72,13 @@ const Cart = () => {
                           <ProductSize>
                             <b>Size:</b> {product.size}
                           </ProductSize>
+                          <ProductSize>
+                            <b>Price:</b> {product.price}
+                          </ProductSize>
                         </Details>
                       </ProductDetail>
                       <PriceDetail >
-                        <ProductAmountContainer>
+                        <ProductQuantityContainer>
                           <Button>
                             <Add style={{ height: "15px", width: "15px" }} />
                           </Button>
@@ -86,7 +86,7 @@ const Cart = () => {
                           <Button>
                             <Remove style={{ height: "15px", width: "15px" }} />
                           </Button>
-                        </ProductAmountContainer>
+                        </ProductQuantityContainer>
                         <ProductPrice>₱{product.price.toString().replace(/\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g, ",")}.00
                         </ProductPrice>
                         <DeleteIconContainer>

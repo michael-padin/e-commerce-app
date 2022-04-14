@@ -2,7 +2,7 @@ import { useState } from "react";
 import { useLocation } from "react-router";
 import Products from "../../components/Shop/Products/Products.js";
 
-import { Container, Filter, FilterContainer, FilterText, Option, Select, Title,} from "./ProductList.styled.js";
+import { Container, Filter, FilterContainer,OptionContainer, FilterText, Option, Select, Title,} from "./ProductList.styled.js";
 
 const ProductList = () => {
   const location = useLocation();
@@ -26,6 +26,7 @@ const ProductList = () => {
       <FilterContainer>
         <Filter>
           <FilterText>Filter Products:</FilterText>
+          <OptionContainer>
           <Select name="color" onChange={handleFilter}>
             <Option disabled>Color</Option>
             <Option>white</Option>
@@ -34,6 +35,7 @@ const ProductList = () => {
             <Option>blue</Option>
             <Option>green</Option>
           </Select>
+            </OptionContainer>
           <Select name="size" onChange={handleFilter}>
             <Option disabled>Size</Option>
             <Option>S</Option>

@@ -44,7 +44,7 @@ export const Form = styled.form`
 
 export const InputContainer = styled.div`
   margin: 20px 15px 0 15px;
-  border-radius: 8px;
+  border-radius: 5px;
   width: 100%;
 
 `;
@@ -53,7 +53,7 @@ export const Input = styled.input`
   font-size: 18px;
   padding: 15px;
   border: 1px solid lightgray;
-  border-radius: 8px;
+  border-radius: 5px;
   width: 100%;  
 
 

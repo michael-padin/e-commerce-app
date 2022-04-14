@@ -7,7 +7,7 @@ export const Container = styled.div`
   max-width: 1300px;
   padding: 20px;
   box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;
-  border-radius: 20px;
+  border-radius: 14px;
   ${mobile({ padding: "5px", boxShadow: "none", margin: "0"})}
   background-color: #fff;
   margin: 20px auto;
@@ -37,15 +37,23 @@ export const FilterText = styled.span`
 export const Select = styled.select`
   margin-right: 20px;
   padding: 8px;
-  border-radius: 5px;
+  border-radius: 4px;
   border: none;
   box-shadow: rgba(0, 0, 0, 0.05) 0px 0px 0px 1px;
 
   ${mobile({ margin: " 10px 0 0 0" })}
 `;
 
+export const OptionContainer = styled.div`
+  border-radius: 4100px;
+
+`;
+
+
 export const Option = styled.option`
   border: none;
+  border-radius: 4px;
+  
 `;
 
 
