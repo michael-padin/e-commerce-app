@@ -6,8 +6,6 @@ import CloseIcon from "@mui/icons-material/Close";
 import { addProduct, addQuantity } from "../../features/cartSlice.js";
 import {fetchAsyncSelectedProduct,refreshSelectedProduct} from "../../features/productSlice.js";
 import { AddContainer, Button, Container, Desc, Filter, FilterColor, FilterContainer, FilterSize, FilterSizeOption, FilterTitle, Image, ImgContainer, InfoContainer, Price, Title, Wrapper, SkeletonImgContainer, SkeletonInfoContainer, SkeletonTitle, SkeletonDesc, ModalContainer, Modal, CloseIconContainer, BackgroundContainer, QuantityButton, ProductQuantityContainer, ProductAmount,} from "./Product.styled.js";
-import Products from "../../components/Shop/Products/Products.js";
-import equal from 'fast-deep-equal/es6'
 
 const Product = () => {
   const dispatch = useDispatch();

@@ -6,7 +6,7 @@ import { useHistory } from "react-router";
 import { userRequest } from "../../common/api/shopApi.js";
 import StripeCheckout from "react-stripe-checkout";
 import DeleteOutlineOutlinedIcon from "@mui/icons-material/DeleteOutlineOutlined";
-import {EmptyText, Bottom, Button, Container, Details, Hr, Image, Info, PriceDetail, Product, ProductAmount, ProductAmountContainer, EmptyCartContainer, EmptyCartImageContainer, EmptyCartImage, ProductColor, ProductDetail, DeleteIconContainer, ProductName, ProductPrice, ProductSize, Summary, SummaryButton, SummaryItem, SummaryItemPrice, SummaryItemText, SummaryTitle, Top, TopButton, Wrapper, ProductColorContainer, ProductQuantityContainer} from "./Cart.styled.js";
+import {EmptyText, Bottom, Button, Container, Details, Hr, Image, Info, PriceDetail, Product, ProductAmount, EmptyCartContainer, EmptyCartImageContainer, EmptyCartImage, ProductColor, ProductDetail, DeleteIconContainer, ProductName, ProductPrice, ProductSize, Summary, SummaryButton, SummaryItem, SummaryItemPrice, SummaryItemText, SummaryTitle, Top, TopButton, Wrapper, ProductColorContainer, ProductQuantityContainer} from "./Cart.styled.js";
 import emptyCart from "../../images/emptyCart.svg";
 
 const Cart = () => {
