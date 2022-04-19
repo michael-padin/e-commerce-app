@@ -21,7 +21,7 @@ const Cart = () => {
   };
 
   useEffect(() => {
-    console.log(cart);
+
     const makeRequest = async () => {
       const res = await userRequest.post("/checkout/payment", {
         tokenId: stripeToken.id,

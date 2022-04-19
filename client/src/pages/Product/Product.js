@@ -60,7 +60,7 @@ const Product = () => {
   };
 
   const handleClick = (e) => {
-    // increase and descrease the quantity
+    // increase and decrease the quantity
     if (e === "increase") {
       setQuantity(quantity + 1);
     } else {

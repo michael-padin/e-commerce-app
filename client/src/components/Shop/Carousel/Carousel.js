@@ -2,18 +2,6 @@ import styled from "styled-components";
 import { mobile, tablet } from "../../../responsive.js";
 import happy from "../../../images/happy.jpg";
 
-// import { A11y, EffectFade, Navigation, Pagination, Scrollbar, Virtual } from "swiper";
-import "swiper/swiper-bundle.min.css";
-import "swiper/swiper.min.css";
-import "swiper/swiper-bundle.css";
-import SwiperCore, {
-  Autoplay,
-  EffectFade,
-  EffectFlip,
-  Navigation,
-  Pagination,
-} from "swiper";
-
 const Container = styled.div`
   display: flex;
   background-image: url(${happy});
@@ -92,7 +80,6 @@ const Description = styled.p`
   ${tablet({ margin: "50px 0 0 0 ", lineHeight: "40px" })}
 `;
 
-SwiperCore.use([EffectFade, EffectFlip, Navigation, Pagination, Autoplay]);
 
 const Carousel = () => {
   return (
