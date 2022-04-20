@@ -1,19 +1,24 @@
 import { Add, Remove } from "@mui/icons-material";
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router";
 import { userRequest } from "../../common/api/shopApi.js";
 import StripeCheckout from "react-stripe-checkout";
 import DeleteOutlineOutlinedIcon from "@mui/icons-material/DeleteOutlineOutlined";
 import {EmptyText, Bottom, Button, Container, Details, Hr, Image, Info, PriceDetail, Product, ProductAmount, EmptyCartContainer, EmptyCartImageContainer, EmptyCartImage, ProductColor, ProductDetail, DeleteIconContainer, ProductName, ProductPrice, ProductSize, Summary, SummaryButton, SummaryItem, SummaryItemPrice, SummaryItemText, SummaryTitle, Top, TopButton, Wrapper, ProductColorContainer, ProductQuantityContainer} from "./Cart.styled.js";
 import emptyCart from "../../images/emptyCart.svg";
+import { addQuantity } from "../../features/cartSlice.js";
 
 const Cart = () => {
+  const dispatch = useDispatch();
   const KEY = process.env.REACT_APP_KEY;
   const history = useHistory();
-  const cart = useSelector((state) => state.cart);
+  const {products} = useSelector((state) => state.cart);
   const user = useSelector((state) => state.user.currentUser);
+  const [quantity, setQuantity] = useState();
+  const [index, setIndex] = useState();
+  const [totalPrice, setTotalPrice] = useState();
   const [stripeToken, setStripeToken] = useState(null);
 
   const onToken = (token) => {
@@ -21,7 +26,6 @@ const Cart = () => {
   };
 
   useEffect(() => {
-
     const makeRequest = async () => {
       const res = await userRequest.post("/checkout/payment", {
         tokenId: stripeToken.id,
@@ -29,16 +33,32 @@ const Cart = () => {
       });
       history.push("/success", {
         stripeData: res.data,
-        products: cart,
+        products: products,
       }); 
     };
     stripeToken && makeRequest();
-  }, [stripeToken, cart, history]);
+  }, [stripeToken, products, history]);
+
+
+  /* const handleClick = (clickedProduct, type) => {
+    const totalPrice = products?.map(product => product.price).reduce((a, b) => a + b, 0) 
+    const index = products.findIndex(product => product._id === clickedProduct._id && product.color === clickedProduct.color && product.size === clickedProduct.size)
+
+    setTotalPrice(totalPrice);
+    setIndex(index);
+
+    if (type === "increase") {
+      setQuantity(clickedProduct.quantity + 1);
+    } else {
+      clickedProduct.quantity > 1 && setQuantity(clickedProduct.quantity - 1);
+    }
+    
+  } */
 
   return (
     <Container>
       <Wrapper>
-      {Object.keys(cart.products).length === 0 ? (
+      {Object.keys(products).length === 0 ? (
           <EmptyCartContainer>
           <EmptyCartImageContainer>
             <EmptyCartImage src={emptyCart} alt={emptyCart} />
@@ -56,7 +76,7 @@ const Cart = () => {
        
           <Bottom>
             <Info>
-              {cart.products.map((product, index) => {
+              {products.map((product, index) => {
                 return (
                   <div key={index}>
                     <Product >
@@ -79,11 +99,11 @@ const Cart = () => {
                       </ProductDetail>
                       <PriceDetail >
                         <ProductQuantityContainer>
-                          <Button>
+                          <Button /* onClick={() => handleClick(product, "increase")} */>
                             <Add style={{ height: "15px", width: "15px" }} />
                           </Button>
                           <ProductAmount>{product.quantity}</ProductAmount>
-                          <Button>
+                          <Button /* onClick={() => handleClick(product, "decrease")} */>
                             <Remove style={{ height: "15px", width: "15px" }} />
                           </Button>
                         </ProductQuantityContainer>
@@ -103,17 +123,17 @@ const Cart = () => {
               <SummaryTitle>ORDER SUMMARY</SummaryTitle>
               <SummaryItem type="total">
                 <SummaryItemText>Total</SummaryItemText>
-                <SummaryItemPrice> ₱ {cart.totalPrice.toString().replace(/\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g, ",")}.00
+                <SummaryItemPrice> ₱ {products.totalPrice?.toString().replace(/\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g, ",")}.00
                 </SummaryItemPrice>
               </SummaryItem>
               {user ? (
                 <StripeCheckout
                   image="https://img.icons8.com/fluency/48/000000/shop.png"
-                  description={`Your total is ₱${cart.totalPrice}`}
+                  description={`Your total is ₱${products.totalPrice}`}
                   name="Moka"
                   billingAddress
                   shippingAddress
-                  amount={cart.totalPrice}
+                  amount={products.totalPrice}
                   token={onToken}
                   stripeKey={KEY}
                   alt={"shop"}

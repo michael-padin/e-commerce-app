@@ -46,14 +46,6 @@ const Product = () => {
     }
    }
    
-   
- /*  const getIndex = () => {
-    let{quantity, ...newUserProduct} = userProduct;
-    console.log(equal(userProduct,product));
-    console.log(product);
-    console.log(userProduct);
-   } 
- */
   // close modal
   const handleClose = () => {
     setIsStarting(false);
