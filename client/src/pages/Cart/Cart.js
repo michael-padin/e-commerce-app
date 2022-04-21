@@ -8,24 +8,21 @@ import StripeCheckout from "react-stripe-checkout";
 import DeleteOutlineOutlinedIcon from "@mui/icons-material/DeleteOutlineOutlined";
 import {EmptyText, Bottom, Button, Container, Details, Hr, Image, Info, PriceDetail, Product, ProductAmount, EmptyCartContainer, EmptyCartImageContainer, EmptyCartImage, ProductColor, ProductDetail, DeleteIconContainer, ProductName, ProductPrice, ProductSize, Summary, SummaryButton, SummaryItem, SummaryItemPrice, SummaryItemText, SummaryTitle, Top, TopButton, Wrapper, ProductColorContainer, ProductQuantityContainer} from "./Cart.styled.js";
 import emptyCart from "../../images/emptyCart.svg";
-import { addQuantity } from "../../features/cartSlice.js";
+import {  addQuantityInCart, removeProduct } from "../../features/cartSlice.js";
 
 const Cart = () => {
   const dispatch = useDispatch();
   const KEY = process.env.REACT_APP_KEY;
   const history = useHistory();
-  const {products} = useSelector((state) => state.cart);
+  const {products, totalPrice} = useSelector((state) => state.cart);
   const user = useSelector((state) => state.user.currentUser);
-  const [quantity, setQuantity] = useState();
-  const [index, setIndex] = useState();
-  const [totalPrice, setTotalPrice] = useState();
   const [stripeToken, setStripeToken] = useState(null);
 
   const onToken = (token) => {
     setStripeToken(token);
   };
 
-  useEffect(() => {
+  useEffect(() => { 
     const makeRequest = async () => {
       const res = await userRequest.post("/checkout/payment", {
         tokenId: stripeToken.id,
@@ -40,20 +37,23 @@ const Cart = () => {
   }, [stripeToken, products, history]);
 
 
-  /* const handleClick = (clickedProduct, type) => {
-    const totalPrice = products?.map(product => product.price).reduce((a, b) => a + b, 0) 
+  const handleClick = (clickedProduct, type) => {  
     const index = products.findIndex(product => product._id === clickedProduct._id && product.color === clickedProduct.color && product.size === clickedProduct.size)
-
-    setTotalPrice(totalPrice);
-    setIndex(index);
-
+    let quantity = clickedProduct.quantity;
+    let price = clickedProduct.price;
     if (type === "increase") {
-      setQuantity(clickedProduct.quantity + 1);
-    } else {
-      clickedProduct.quantity > 1 && setQuantity(clickedProduct.quantity - 1);
-    }
-    
-  } */
+       quantity += 1;
+      dispatch(addQuantityInCart({index, quantity: quantity, totalPrice: price}))
+    } else  if (type === "decrease") {
+      quantity -= 1;
+      quantity >= 1 ? dispatch(addQuantityInCart({index, quantity: quantity, totalPrice: price})) : dispatch(removeProduct({index}));
+    } 
+  }
+
+  const handleDelete = (clickedProduct) => {
+    const index = products.findIndex(product => product._id === clickedProduct._id && product.color === clickedProduct.color && product.size === clickedProduct.size)  
+    dispatch(removeProduct({index}));
+  }
 
   return (
     <Container>
@@ -79,7 +79,7 @@ const Cart = () => {
               {products.map((product, index) => {
                 return (
                   <div key={index}>
-                    <Product >
+                    <Product>
                       <ProductDetail>
                         <Image src={product.img} alt={product.img}/>
                         <Details >
@@ -99,17 +99,17 @@ const Cart = () => {
                       </ProductDetail>
                       <PriceDetail >
                         <ProductQuantityContainer>
-                          <Button /* onClick={() => handleClick(product, "increase")} */>
+                          <Button onClick={() => handleClick(product, "increase")}>
                             <Add style={{ height: "15px", width: "15px" }} />
                           </Button>
                           <ProductAmount>{product.quantity}</ProductAmount>
-                          <Button /* onClick={() => handleClick(product, "decrease")} */>
+                          <Button onClick={() => handleClick(product, "decrease")}>
                             <Remove style={{ height: "15px", width: "15px" }} />
                           </Button>
                         </ProductQuantityContainer>
-                        <ProductPrice>₱{product.price.toString().replace(/\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g, ",")}.00
+                        <ProductPrice>₱{product.totalPrice.toString().replace(/\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g, ",") ?? product.price.toString().replace(/\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g, ",") }.00
                         </ProductPrice>
-                        <DeleteIconContainer>
+                        <DeleteIconContainer onClick = {() => handleDelete(product)}>
                           <DeleteOutlineOutlinedIcon fontSize="medium" style={{ color: "gray", fontSize: "30px" }}/>
                         </DeleteIconContainer>
                       </PriceDetail>
@@ -123,21 +123,11 @@ const Cart = () => {
               <SummaryTitle>ORDER SUMMARY</SummaryTitle>
               <SummaryItem type="total">
                 <SummaryItemText>Total</SummaryItemText>
-                <SummaryItemPrice> ₱ {products.totalPrice?.toString().replace(/\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g, ",")}.00
+                <SummaryItemPrice> ₱ {totalPrice?.toString().replace(/\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g, ",")}.00
                 </SummaryItemPrice>
               </SummaryItem>
               {user ? (
-                <StripeCheckout
-                  image="https://img.icons8.com/fluency/48/000000/shop.png"
-                  description={`Your total is ₱${products.totalPrice}`}
-                  name="Moka"
-                  billingAddress
-                  shippingAddress
-                  amount={products.totalPrice}
-                  token={onToken}
-                  stripeKey={KEY}
-                  alt={"shop"}
-                >
+                <StripeCheckout image="https://img.icons8.com/fluency/48/000000/shop.png" description={`Your total is ₱${products.totalPrice}`} name="Moka" billingAddress shippingAddress amount={products.totalPrice} token={onToken} stripeKey={KEY} alt={"shop"}>
                   <SummaryButton>CHECKOUT</SummaryButton>
                 </StripeCheckout>
               ) : (
