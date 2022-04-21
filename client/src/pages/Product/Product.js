@@ -34,9 +34,9 @@ const Product = () => {
     setUserProduct(()=> ({ ...selectedProduct, quantity, size, color  }));
   }, [ quantity, size, color, selectedProduct ]);
 
-  // compare objects, if same objects only quantity change
+  // find product if exist 
   const getProducts = () => {
-    const totalPrice = products?.map(product => product.price).reduce((a, b) => a + b, 0) 
+    const totalPrice = products?.map(product => product.totalPrice).reduce((a, b) => a + b, 0) 
     const product = products?.find(product => product._id === userProduct._id && product.color === userProduct.color && product.size === userProduct.size);
     if (product) {
       const index = products.findIndex(product => product._id === userProduct._id && product.color === userProduct.color && product.size === userProduct.size)
@@ -132,12 +132,12 @@ const Product = () => {
               </FilterContainer>
               <AddContainer>
                 <ProductQuantityContainer>
-                  <QuantityButton>
-                  <Remove onClick={() => handleClick("decrease")} style={{ height: "15px", width: "15px" }} />
+                  <QuantityButton onClick={() => handleClick("decrease")} >
+                  <Remove  style={{ height: "15px", width: "15px" }}/>
                   </QuantityButton>
                   <ProductAmount>{quantity}</ProductAmount>
-                  <QuantityButton>
-                  <Add onClick={() => handleClick("increase")} style={{ height: "15px", width: "15px" }}/>
+                  <QuantityButton  onClick={() => handleClick("increase")} >
+                  <Add style={{ height: "15px", width: "15px" }}/>
                   </QuantityButton>
                 </ProductQuantityContainer>
                 <Button onClick={handleSubmit}>Add to cart</Button>
