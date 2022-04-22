@@ -121,11 +121,11 @@ const Product = () => {
                 <Filter>
                   <FilterTitle>Size: </FilterTitle>
                   <FilterSize onChange={(e) => setSize(e.target.value)}>
-                    <FilterSizeOption selected disabled hidden>
+                    <FilterSizeOption value = "Select Size" hidden >
                       Select Size
                     </FilterSizeOption>
                     {selectedProduct.size?.map((size, idx) => (
-                      <FilterSizeOption key={idx}>{size}</FilterSizeOption>
+                      <FilterSizeOption key={idx} value = {size}>{size}</FilterSizeOption>
                     ))}
                   </FilterSize>
                 </Filter>
