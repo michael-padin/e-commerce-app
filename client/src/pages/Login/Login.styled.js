@@ -106,7 +106,7 @@ export const linkStyle = {
   margin: "5px 0",
   textDecoration: "none",
   cursor: "pointer",
-  color: "#000",
+  color: "#ffb8c6",
 };
 
 export const ErrorMessage = styled.div`

@@ -71,10 +71,9 @@ const Login = () => {
           <Button disabled = {isFetching}>Login</Button>
           <LinkWrapper>
           <LinkContainer> 
-           <Link to= "/"style = {linkStyle}>Forgot password?</Link>
           </LinkContainer>
           <LinkContainer>
-            <Link to= "/register" style = {linkStyle}>Create a new account</Link>
+            Don't have an account?<Link to= "/register" style = {linkStyle}> Sign up</Link>
           </LinkContainer>
           </LinkWrapper>
           </BottomContainer>

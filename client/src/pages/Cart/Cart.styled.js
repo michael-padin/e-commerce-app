@@ -2,7 +2,7 @@ import styled from "styled-components";
 import { mobile } from "../../responsive.js";
 
 export const Container = styled.div`
-  min-height: 80vh;
+  min-height: 100vh;
   max-width: 1500px;
   margin: auto;
 `;
@@ -45,7 +45,7 @@ export const TopButton = styled.button`
 `;
 
 export const EmptyCartContainer = styled.div`
-  min-height: 50vh;
+  height: 100vh;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -53,7 +53,7 @@ export const EmptyCartContainer = styled.div`
 `;
 
 export const EmptyCartImageContainer = styled.div`
-  height: 200px;
+  height: 150px;
 `;
 
 export const EmptyCartImage = styled.img`
@@ -78,7 +78,7 @@ export const Info = styled.div`
 
   max-height: 100%;
 
-  ${mobile({ hieght: "auto"})}
+  ${mobile({ height: "auto"})}
 
 `;
 
