@@ -89,7 +89,7 @@ const Carousel = () => {
           <InfoContainer>
             <Title>LOUNGEWEAR LOVE</Title>
             <Description>
-              DON'T COMPORMISE ON STYLE! GET FLAT 30% OFF FOR NEW ARRIVALS
+              GET FLAT 20% OFF FOR NEW ARRIVALS
             </Description>
           </InfoContainer>
         </ParentContainer>

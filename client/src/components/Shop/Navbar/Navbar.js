@@ -69,7 +69,7 @@ const Navbar = () => {
                 <ModalContainer isVisible={visible} onMouseEnter={() => setVisible(visible)} onMouseLeave={() => setVisible(!visible)}>
                   <ArrowUp />
                   <List>
-                    <Link to="/user/account/myaccount" style={LinkStyle}>
+                    <Link to="/user/account" style={LinkStyle}>
                       <ListItem>My account</ListItem>
                     </Link>
                     <ListItem onClick={handleSubmit}>logout</ListItem>

@@ -25,10 +25,9 @@ const Left = styled.div`
 `;
 
 const Logo = styled.h1``;
-const Description = styled.p`
-  margin: 20px 0px;
-`;
+
 const SocialContainer = styled.div`
+  margin: 20px 0;
   display: flex;
 `;
 const SocialIcon = styled.div`
@@ -84,12 +83,13 @@ const StyledLink = styled(Link)`
 `;
 
 const Footer = () => {
+  const year = new Date().getFullYear();
   return (
     <Container>
       <Left>
         <Logo>Moka</Logo>
         <SocialContainer>
-          <SocialIcon color="#1 877F2">
+          <SocialIcon color="#1877F2">
             <FacebookTwoTone />
           </SocialIcon>
           <SocialIcon color="radial-gradient(circle at 30% 107%, #fdf497 0%, #fdf497 5%, #fd5949 45%,#d6249f 60%,#285AEB 90%);">
@@ -99,6 +99,7 @@ const Footer = () => {
             <Twitter />
           </SocialIcon>
         </SocialContainer>
+          © {year}. All Rights Reserved.
       </Left>
       <Center>
         <Title>Useful Links</Title>
@@ -114,8 +115,8 @@ const Footer = () => {
           <Phone style={{ marginRight: "10px" }} /> +63 908 987 5407
         </ContactItem>
         <ContactItem>
-         <EmailOutlined style={{ marginRight: "10px" }} /><StyledLink to = "/user/account"> padinmichael201@gmail.com
-        </StyledLink>   </ContactItem>
+         <EmailOutlined style={{ marginRight: "10px" }} />  padinmichael201@gmail.com
+       </ContactItem>
        
       </Right>
     </Container>

@@ -121,13 +121,15 @@ export const SkeletonInfoContainer = styled.div`
 
 export const SkeletonTitle = styled.div`
   background-color: #fafafa;
-  width: 80%;
+  width: 50%;
   height: 50px;
+ margin: 0px 0px 20px 0;
 `;
 export const SkeletonDesc = styled.div`
   background-color: #fafafa;
-  width: 80%;
+  width: 100%;
   height: 20px;
+  margin: 5px 0;
 `;
 
 export const ProductQuantityContainer = styled.div`

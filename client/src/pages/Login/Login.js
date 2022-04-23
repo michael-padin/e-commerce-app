@@ -57,7 +57,7 @@ const Login = () => {
           <Image src = {LoginImage}></Image>
       </ImageContainer>
       <Wrapper>
-        <Title>Sign in</Title>
+        <Title>Log in</Title>
         <Form onSubmit = {handleSubmit} >
           <InputContainer>
           <Input  name = "email" placeholder="Email" type = "email" onChange={handleChange}/>
