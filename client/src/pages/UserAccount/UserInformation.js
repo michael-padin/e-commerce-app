@@ -2,6 +2,7 @@ import styled from "styled-components";
 import PersonOutlineIcon from "@mui/icons-material/PersonOutline";
 import { mobile } from "../../responsive.js";
 import { useSelector } from "react-redux";
+import UserProfile from "../../components/UserAccount/UserProfile.js";
 
 const Container = styled.div`
   max-width: 1300px;
@@ -78,6 +79,7 @@ const UserInformation = () => {
           </ListContainer>
         </ListItems>
       </Sidebar>
+      <UserProfile/>
     </Container>
   );
 };

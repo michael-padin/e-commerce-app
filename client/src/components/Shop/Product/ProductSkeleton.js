@@ -1,5 +1,5 @@
 import React from 'react'
-import {Wrapper, Title, Bottom, Container, Price } from './Product.styled.js'
+import {Wrapper, Title, Bottom, Container, Price } from './ProductSkeleton.styled.js'
 
 const ProductSkeleton = ({item}) => {
   return (

@@ -84,7 +84,7 @@ const Register = () => {
         <Image src={RegisterImage} />
       </ImageContainer>
       <Wrapper>
-        <Title>Create Account</Title>
+        <Title>Sign up</Title>
         <Form onSubmit={handleSubmit}>
           <InputContainer>
             <Input name="fullName" placeholder="Full Name" onChange={handleChange}/>
@@ -101,7 +101,7 @@ const Register = () => {
           <BottomContainer>
           <Button>Create</Button>
           </BottomContainer>
-          <LinkContainer>Already have an account? <Link to= "/login"style = {linkStyle}>Sign in</Link></LinkContainer>
+          <LinkContainer>Already have an account? <Link to= "/login"style = {linkStyle}>Log in</Link></LinkContainer>
         </Form>
       </Wrapper>
     </Container>

@@ -5,7 +5,7 @@ import styled from "styled-components";
 import Product from "../Product/Product.js";
 import {getAllProductsByCat} from "../../../features/productSlice.js";
 import noFoundImage from "../../../images/noSearchItem.png";
-import ProductSkeleton from "../Product/Product_Skeleton.js"
+import ProductSkeleton from "../Product/ProductSkeleton.js"
 
 const Container = styled.div`
   max-width: 1300px;

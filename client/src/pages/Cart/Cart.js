@@ -9,6 +9,7 @@ import DeleteOutlineOutlinedIcon from "@mui/icons-material/DeleteOutlineOutlined
 import {EmptyText, Bottom, Button, Container, Details, Hr, Image, Info, PriceDetail, Product, ProductAmount, EmptyCartContainer, EmptyCartImageContainer, EmptyCartImage, ProductColor, ProductDetail, DeleteIconContainer, ProductName, ProductPrice, ProductSize, Summary, SummaryButton, SummaryItem, SummaryItemPrice, SummaryItemText, SummaryTitle, Top, TopButton, Wrapper, ProductColorContainer, ProductQuantityContainer} from "./Cart.styled.js";
 import emptyCart from "../../images/emptyCart.svg";
 import {  addQuantityInCart, removeProduct } from "../../features/cartSlice.js";
+import logo from "../../images/logo.png"
 
 const Cart = () => {
   const dispatch = useDispatch();
@@ -127,7 +128,7 @@ const Cart = () => {
                 </SummaryItemPrice>
               </SummaryItem>
               {user ? (
-                <StripeCheckout image="https://img.icons8.com/fluency/48/000000/shop.png" description={`Your total is ₱${products.totalPrice}`} name="Moka" billingAddress shippingAddress amount={products.totalPrice} token={onToken} stripeKey={KEY} alt={"shop"}>
+                <StripeCheckout image={logo} description={`Your total is ₱${totalPrice}`} name="Moka" billingAddress shippingAddress amount={totalPrice} token={onToken} stripeKey={KEY} alt={"shop"}>
                   <SummaryButton>CHECKOUT</SummaryButton>
                 </StripeCheckout>
               ) : (
