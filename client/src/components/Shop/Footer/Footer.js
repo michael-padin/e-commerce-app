@@ -7,6 +7,8 @@ import {
 } from "@mui/icons-material";
 import styled from "styled-components";
 import { mobile } from "../../../responsive.js";
+import { Link } from "react-router-dom";
+
 
 const Container = styled.div`
   display: flex;
@@ -76,17 +78,16 @@ const ContactItem = styled.div`
   align-items: center;
 `;
 
+const StyledLink = styled(Link)`
+  text-decoration: none;
+  color: rgba(0,0,0,.54);
+`;
+
 const Footer = () => {
   return (
     <Container>
       <Left>
         <Logo>Moka</Logo>
-        <Description>
-          Lorem ipsum, dolor sit amet consectetur adipisicing elit. Similique
-          nulla quasi debitis et eaque, porro accusantium aspernatur veritatis
-          error nobis, in voluptatum ipsa laboriosam ex autem sed fugiat
-          dignissimos. Harum!
-        </Description>
         <SocialContainer>
           <SocialIcon color="#1 877F2">
             <FacebookTwoTone />
@@ -102,20 +103,19 @@ const Footer = () => {
       <Center>
         <Title>Useful Links</Title>
         <List>
-          <ListItem>Home</ListItem>
-          <ListItem>Cart</ListItem>
-          <ListItem> Woman Fashion</ListItem>
-          <ListItem> My Account</ListItem>
+          <ListItem><StyledLink to = "/">Home</StyledLink></ListItem>
+          <ListItem><StyledLink to = "/cart">Cart</StyledLink></ListItem>
+          <ListItem><StyledLink to = "/user/account">My account</StyledLink></ListItem>
         </List>
       </Center>
       <Right>
         <Title>Contact</Title>
         <ContactItem>
-          <Phone style={{ marginRight: "10px" }} /> +9 876 543 210
+          <Phone style={{ marginRight: "10px" }} /> +63 908 987 5407
         </ContactItem>
         <ContactItem>
-          <EmailOutlined style={{ marginRight: "10px" }} /> moka@gmail.com
-        </ContactItem>
+         <EmailOutlined style={{ marginRight: "10px" }} /><StyledLink to = "/user/account"> padinmichael201@gmail.com
+        </StyledLink>   </ContactItem>
        
       </Right>
     </Container>

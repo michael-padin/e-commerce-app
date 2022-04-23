@@ -75,10 +75,6 @@ export const Input = styled.input`
   })}
 `;
 
-export const Agreement = styled.span`
-  font-size: 12px;
-  margin: 20px 0;
-`;
 
 export const Button = styled.button`
   width: 40%;

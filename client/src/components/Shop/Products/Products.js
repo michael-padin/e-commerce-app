@@ -1,11 +1,11 @@
 import { useEffect, useState } from "react";
-import styled from "styled-components";
-import Product from "../Product/Product.js";
 import { mobile, tablet } from "../../../responsive.js";
 import {  useSelector } from "react-redux";
+import styled from "styled-components";
+import Product from "../Product/Product.js";
 import {getAllProductsByCat} from "../../../features/productSlice.js";
-
 import noFoundImage from "../../../images/noSearchItem.png";
+import ProductSkeleton from "../Product/Product_Skeleton.js"
 
 const Container = styled.div`
   max-width: 1300px;
@@ -68,7 +68,7 @@ const Products = ({ cat, filters, sort }) => {
   const { productsBySearch } = useSelector((state) => state.products);
   const productStatus = useSelector((state) => state.products.status);
   const [filteredProducts, setFilteredProducts] = useState([]);
-
+  const length = [1, 2, 3, 4, 5, 6, 7, 8,9, 10];
   useEffect(() => {
     cat === "search"
       ? setFilteredProducts(
@@ -112,9 +112,9 @@ const Products = ({ cat, filters, sort }) => {
   return (
     <Container>
       {productStatus === "pending" ? (
-        <div>
-          <h1 style={{ color: "black" }}>Loading</h1>
-        </div>
+        length.map((item, i) => 
+          <ProductSkeleton item =  {item} key = {i}/>
+        )
       ) : productStatus === "fulfilled" &&   Object.keys(filteredProducts).length !== 0 ?(
         filteredProducts.map((item, idx) => <Product item={item} key={idx} />)
       ) : (

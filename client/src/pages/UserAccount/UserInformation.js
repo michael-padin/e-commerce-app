@@ -1,9 +1,6 @@
 import styled from "styled-components";
 import PersonOutlineIcon from "@mui/icons-material/PersonOutline";
-import UserProfile from "../../components/UserAccount/UserProfile.js";
-import { useRouteMatch, Switch, Route, Redirect } from "react-router";
 import { mobile } from "../../responsive.js";
-import { Link } from "react-router-dom";
 import { useSelector } from "react-redux";
 
 const Container = styled.div`
@@ -57,14 +54,8 @@ const List = styled.li`
   padding: 10px;
 `;
 
-const LinkStyle = {
-  textDecoration: 'none',
-  color: '#000'
-}
-
 
 const UserInformation = () => {
-  const { path, url } = useRouteMatch();
   const user = useSelector((state) => state.user.currentUser);
 
   return (
@@ -79,22 +70,14 @@ const UserInformation = () => {
           <Username>{user?.fullName}</Username>
         </AccountProfile>
         <ListItems>
-          <ListContainer  ontainer>
+          <ListContainer>
             <IconContainer>
               <PersonOutlineIcon />
             </IconContainer>
-            <Link to={`${url}/myaccount` }  style = {LinkStyle}>
               <List>My Account</List>
-            </Link>
           </ListContainer>
         </ListItems>
       </Sidebar>
-
-      <Switch>
-        <Route exact path={`${path}/myaccount`}>
-          {user ? <UserProfile /> : <Redirect to="/" />}
-        </Route>
-      </Switch>
     </Container>
   );
 };

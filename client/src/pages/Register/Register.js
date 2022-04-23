@@ -1,9 +1,11 @@
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router";
+import { Link } from "react-router-dom";
 import { register, removeStatus } from "../../features/userSlice.js";
 import RegisterImage from "../../images/login.png";
-import { Agreement, Button, Container, Form, Input, Title, Wrapper, ImageContainer, Image, ErrorMessage, InputContainer,} from "./Register.styled.js";
+import { BottomContainer, LinkContainer, linkStyle } from "../Login/Login.styled.js";
+import {  Button, Container, Form, Input, Title, Wrapper, ImageContainer, Image, ErrorMessage, InputContainer,} from "./Register.styled.js";
 
 const initialState = { fullName: "", email: "", password: ""};
 //eslint-disable-next-line
@@ -96,11 +98,10 @@ const Register = () => {
             <Input name="password" type="password" placeholder="Password" onChange={handleChange}/>
             <ErrorMessage>{passwordErr ? passwordErr: serverErr}</ErrorMessage>
           </InputContainer>
-          <Agreement>
-            By creating an account, I consent to the processing of my personal
-            data in accordance with the <b> PRIVACY POLICY </b>
-          </Agreement>
+          <BottomContainer>
           <Button>Create</Button>
+          </BottomContainer>
+          <LinkContainer>Already have an account? <Link to= "/login"style = {linkStyle}>Sign in</Link></LinkContainer>
         </Form>
       </Wrapper>
     </Container>

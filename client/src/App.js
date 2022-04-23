@@ -35,8 +35,10 @@ function App() {
             <Route exact path="/login" >
               {user ? <Redirect to="/" /> : <Login />}
             </Route>
-            <Route  path="/user/account" component = {UserInformation}/>
-            <Route path = "*" component = {NotFound} />
+            <Route  exact path="/user/account" >
+              {user ? <UserInformation/> : <Register/>}
+            </Route>
+            <Route exact path = "*" component = {NotFound} />
           </Switch>
           <Footer />
         </Router>
