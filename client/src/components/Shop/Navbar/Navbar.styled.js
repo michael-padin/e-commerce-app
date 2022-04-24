@@ -141,9 +141,10 @@ export const MenuItem = styled.div`
   ${mobile({ fontSize: "14px", marginLeft: "10px" })}
 `;
 export const ModalContainer = styled.div`
+
   display: ${(props) => (props.isVisible === true ? "block" : "none")};
   position: absolute;
-  right: 69px;
+  right: 82px;
   bottom: -85px;
   background-color: #fff;
   color: #000;

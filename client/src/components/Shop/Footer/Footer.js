@@ -11,10 +11,11 @@ import { Link } from "react-router-dom";
 
 
 const Container = styled.div`
+
   display: flex;
   background-color: #fbfbfb;
   color: rgba(0,0,0,.54);
-  ${mobile({ flexDirection: "column" })}
+  ${mobile({ flexDirection: "column", fontSize: ".75rem" })}
   text-align: left;
 `;
 const Left = styled.div`
@@ -27,12 +28,12 @@ const Left = styled.div`
 const Logo = styled.h1``;
 
 const SocialContainer = styled.div`
-  margin: 20px 0;
+  margin: 10px 0;
   display: flex;
 `;
 const SocialIcon = styled.div`
-  width: 40px;
-  height: 40px;
+  width: 25px;
+  height: 25px;
   background: ${(props) => props.color};
   color: white;
   border-radius: 50%;
@@ -45,11 +46,11 @@ const SocialIcon = styled.div`
 const Center = styled.div`
   flex: 1;
   padding: 20px;
-  ${mobile({ display: "none" })}
+  /* ${mobile({ display: "none" })} */
 `;
 
 const Title = styled.h3`
-  margin-bottom: 30px;
+  margin-bottom: 20px;
 `;
 
 const List = styled.ul`
@@ -72,7 +73,7 @@ const Right = styled.div`
 `;
 
 const ContactItem = styled.div`
-  margin-bottom: 20px;
+  margin-bottom: 10px;
   display: flex;
   align-items: center;
 `;
@@ -90,13 +91,13 @@ const Footer = () => {
         <Logo>Moka</Logo>
         <SocialContainer>
           <SocialIcon color="#1877F2">
-            <FacebookTwoTone />
+            <FacebookTwoTone fontSize="small" />
           </SocialIcon>
           <SocialIcon color="radial-gradient(circle at 30% 107%, #fdf497 0%, #fdf497 5%, #fd5949 45%,#d6249f 60%,#285AEB 90%);">
-            <Instagram />
+            <Instagram fontSize="small" />
           </SocialIcon>
           <SocialIcon color="#1DA1F2">
-            <Twitter />
+            <Twitter fontSize="small" />
           </SocialIcon>
         </SocialContainer>
           © {year}. All Rights Reserved.

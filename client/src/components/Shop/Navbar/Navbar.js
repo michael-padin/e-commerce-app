@@ -9,6 +9,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useState } from "react";
 import {AccountContainer,AccountProfile,ArrowUp,Center,Circle,Container,IconContainer,Input,Left,LinkStyle,List,ListContainer,ListItem,ListItems,Logo,LogoSidebarContainer,MenuItem,ModalContainer,Right,SearchContainer,Sidebar,Wrapper,} from "./Navbar.styled.js";
 import { fetchAsyncProductsBySearch } from "../../../features/productSlice.js";
+import PersonOutlineOutlinedIcon from '@mui/icons-material/PersonOutlineOutlined';
 import { logoutStart } from "../../../features/userSlice.js";
 
 const Navbar = () => {
@@ -16,7 +17,7 @@ const Navbar = () => {
   const history = useHistory();
   const { quantity } = useSelector((state) => state.cart);
   const user = useSelector((state) => state.user.currentUser);
-  const [visible, setVisible] = useState(false);
+  const [visible, setVisible] = useState(true);
   const [search, setSearch] = useState("");
 
   const handleSubmit = () => {
@@ -57,8 +58,8 @@ const Navbar = () => {
                 </Badge>
               </MenuItem>
             </Link>
-            {user ? (
-              <>
+            {user ? (              
+            <>
                 <MenuItem>
                   <AccountContainer onClick={() => setVisible(!visible)} >
                     <Circle>
@@ -70,20 +71,32 @@ const Navbar = () => {
                   <ArrowUp />
                   <List>
                     <Link to="/user/account" style={LinkStyle}>
-                      <ListItem>My account</ListItem>
+                      <ListItem>Account</ListItem>
                     </Link>
-                    <ListItem onClick={handleSubmit}>logout</ListItem>
+                    <ListItem onClick={handleSubmit}>Sign out</ListItem>
                   </List>
                 </ModalContainer>
               </>
             ) : (
               <>
-                <Link to="/register" style={{textDecoration: "none",cursor: "pointer",color: "#fff",}}>
-                  <MenuItem> Register </MenuItem>
-                </Link>
-                <Link to="/login" style={{ textDecoration: "none", cursor: "pointer", color: "#fff",}}>
-                  <MenuItem> Sign In </MenuItem>
-                </Link>
+               <MenuItem>
+                  <AccountContainer onClick={() => setVisible(!visible)} >
+                    <Circle>
+                      <AccountProfile><PersonOutlineOutlinedIcon fontSize= "large" color = "disabled"/></AccountProfile>
+                    </Circle>
+                  </AccountContainer>
+                </MenuItem>
+                <ModalContainer isVisible={visible} onMouseEnter={() => setVisible(visible)} onMouseLeave={() => setVisible(!visible)}>
+                  <ArrowUp />
+                  <List>
+                    <Link to="/login" style={LinkStyle}>
+                      <ListItem>Log in</ListItem>
+                    </Link>
+                    <Link to="/register" style={LinkStyle}>
+                      <ListItem>Sign up</ListItem>
+                    </Link>
+                  </List>
+                </ModalContainer>
               </>
             )}
           </Right>
@@ -99,7 +112,7 @@ const Navbar = () => {
             <Logo color="#b5838d">Moka</Logo>
           </LogoSidebarContainer>
           <ListContainer>
-            <Link to="/user/account/myaccount" style={LinkStyle}>
+            <Link to="/user/account/" style={LinkStyle}>
               <ListItems onClick={() => setVisible(!visible)}>
                 <IconContainer>
                   <PersonOutlineIcon />
@@ -118,10 +131,13 @@ const Navbar = () => {
       ) : (
         <Sidebar isOpen={visible}>
           <LogoSidebarContainer>
+          <IconContainer onClick={() => setVisible(!visible)}>
+              <KeyboardBackspaceOutlinedIcon />
+            </IconContainer>
             <Logo color="#b5838d">Moka</Logo>
           </LogoSidebarContainer>
           <ListContainer>
-            <Link to="/user/acount/myaccount" style={LinkStyle}>
+            <Link to="/user/account/" style={LinkStyle}>
               <ListItems>
                 <IconContainer>
                   <PersonOutlineIcon />

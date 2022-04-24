@@ -2,35 +2,46 @@ import styled from "styled-components";
 import { mobile, tablet } from "../../responsive.js";
 
 export const Container = styled.div`
-  max-width: 1500px;
-  margin: auto;
+  border-radius: 10px;
+  box-shadow: rgba(9, 30, 66, 0.25) 0px 1px 1px,
+    rgba(9, 30, 66, 0.13) 0px 0px 1px 1px;
+
+  max-width: 1200px;
+  margin: 30px auto;
   height: 100%;
   background-color: #fff;
   display: flex;
   align-items: center;
-  ${mobile({ padding: "20px" })}
+  ${mobile({ padding: "20px",  display: "block", boxShadow: "none",  })}
 `;
 
 export const ImageContainer = styled.div`
+  border-radius: 10px;
   display: flex;
   align-items: center;
-  height: 90vh;
+  height: 80vh;
+  margin: 10px;
   width: 50%;
+  background-color: #f5f4f9;
   ${mobile({ display: "none" })}
+  ${tablet({
+    height: "100%", 
+  })}
 `;
 export const Image = styled.img`
   width: 100%;
 `;
-
 export const Wrapper = styled.div`
   margin: auto;
   border-radius: 5px;
   padding: 20px;
-  width: 30%;
-  box-shadow: rgba(9, 30, 66, 0.25) 0px 1px 1px, rgba(9, 30, 66, 0.13) 0px 0px 1px 1px;
+  width: 35%;
   background-color: white;
   flex-direction: column;
-  ${mobile({ width: "100%" })}
+  ${mobile({ width: "100%",  padding: "0" })}
+  ${tablet({
+    padding: "0", width: "40%"
+  })}
 `;
 export const Title = styled.h1`
   font-size: 24px;
@@ -43,10 +54,9 @@ export const Form = styled.form`
 `;
 
 export const InputContainer = styled.div`
-  margin: 20px 15px 0 15px;
+  margin: 5px 0 5px 0;
   border-radius: 5px;
   width: 100%;
-
 `;
 
 export const Input = styled.input`
@@ -62,22 +72,19 @@ export const Input = styled.input`
     border: none;
   }
   ${mobile({
-    margin: "10px 0 0 0",
-    padding: "10px",
-    fontSize: "15px",
-    minWidth: "100%",
-  })}
-  ${tablet({
-    margin: "10px 0 0 0",
-    padding: "10px",
-    fontSize: "15px",
     minWidth: "100%",
   })}
 `;
 
+export const BottomContainer = styled.div`
+  margin: 20px 0;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+`;
 
 export const Button = styled.button`
-  width: 40%;
+  width: 100%;
   border: none;
   background-color: #b5838d;
   border-radius: 5px;
@@ -91,16 +98,23 @@ export const Button = styled.button`
     background-color: #ffb8c6;
     color: white;
   }
-  ${mobile({
-    margin: "10px 0 0 0",
-    padding: "10px",
-    fontSize: "15px",
-    minWidth: "100%",
-  })}
 `;
-
 export const ErrorMessage = styled.div`
   font-size: 14px;
   color: red;
   padding: 5px 0 0 5px;
 `;
+
+
+export const LinkContainer = styled.div`
+  font-size: 14px;
+`;
+
+export const linkStyle = {
+  margin: "5px 0",
+  textDecoration: "none",
+  cursor: "pointer",
+  color: "#ffb8c6",
+};
+
+

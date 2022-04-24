@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import {Button,Container,Form,Input,linkStyle,Title,Wrapper, ImageContainer,Image, InputContainer, ErrorMessage, LinkContainer, BottomContainer, LinkWrapper} from "./Login.styled.js";
+import {Button,Container,Form,Input,linkStyle,Title,Wrapper, ImageContainer,Image, InputContainer, ErrorMessage, LinkContainer, BottomContainer,} from "./Login.styled.js";
 import { Link } from "react-router-dom";
-import LoginImage from "../../images/login.png";
+import LoginImage from "../../images/login.svg";
 import { login, removeStatus} from "../../features/userSlice.js";
 
 const initialState = {email: "", password: ""};
@@ -69,14 +69,10 @@ const Login = () => {
           </InputContainer>
           <BottomContainer>
           <Button disabled = {isFetching}>Login</Button>
-          <LinkWrapper>
-          <LinkContainer> 
-          </LinkContainer>
+          </BottomContainer>
           <LinkContainer>
             Don't have an account?<Link to= "/register" style = {linkStyle}> Sign up</Link>
           </LinkContainer>
-          </LinkWrapper>
-          </BottomContainer>
         </Form>
       </Wrapper>
     </Container>

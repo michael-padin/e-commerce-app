@@ -3,9 +3,8 @@ import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router";
 import { Link } from "react-router-dom";
 import { register, removeStatus } from "../../features/userSlice.js";
-import RegisterImage from "../../images/login.png";
-import { BottomContainer, LinkContainer, linkStyle } from "../Login/Login.styled.js";
-import {  Button, Container, Form, Input, Title, Wrapper, ImageContainer, Image, ErrorMessage, InputContainer,} from "./Register.styled.js";
+import RegisterImage from "../../images/login.svg";
+import {  BottomContainer, LinkContainer, linkStyle,Button, Container, Form, Input, Title, Wrapper, ImageContainer, Image, ErrorMessage, InputContainer,} from "./Register.styled.js";
 
 const initialState = { fullName: "", email: "", password: ""};
 //eslint-disable-next-line
