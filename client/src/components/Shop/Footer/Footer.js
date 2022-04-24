@@ -9,12 +9,13 @@ import styled from "styled-components";
 import { mobile } from "../../../responsive.js";
 import { Link } from "react-router-dom";
 
-
 const Container = styled.div`
-
+margin: auto;
+  border-top: 1px solid #eee;
+  max-width: 1500px;
   display: flex;
-  background-color: #fbfbfb;
-  color: rgba(0,0,0,.54);
+  background-color: #ffff;
+  color: rgba(0, 0, 0, 0.54);
   ${mobile({ flexDirection: "column", fontSize: ".75rem" })}
   text-align: left;
 `;
@@ -80,7 +81,7 @@ const ContactItem = styled.div`
 
 const StyledLink = styled(Link)`
   text-decoration: none;
-  color: rgba(0,0,0,.54);
+  color: rgba(0, 0, 0, 0.54);
 `;
 
 const Footer = () => {
@@ -100,14 +101,20 @@ const Footer = () => {
             <Twitter fontSize="small" />
           </SocialIcon>
         </SocialContainer>
-          © {year}. All Rights Reserved.
+        © {year}. All Rights Reserved.
       </Left>
       <Center>
         <Title>Useful Links</Title>
         <List>
-          <ListItem><StyledLink to = "/">Home</StyledLink></ListItem>
-          <ListItem><StyledLink to = "/cart">Cart</StyledLink></ListItem>
-          <ListItem><StyledLink to = "/user/account">My account</StyledLink></ListItem>
+          <ListItem>
+            <StyledLink to="/">Home</StyledLink>
+          </ListItem>
+          <ListItem>
+            <StyledLink to="/cart">Cart</StyledLink>
+          </ListItem>
+          <ListItem>
+            <StyledLink to="/user/account">My account</StyledLink>
+          </ListItem>
         </List>
       </Center>
       <Right>
@@ -116,9 +123,9 @@ const Footer = () => {
           <Phone style={{ marginRight: "10px" }} /> +63 908 987 5407
         </ContactItem>
         <ContactItem>
-         <EmailOutlined style={{ marginRight: "10px" }} />  padinmichael201@gmail.com
-       </ContactItem>
-       
+          <EmailOutlined style={{ marginRight: "10px" }} />{" "}
+          padinmichael201@gmail.com
+        </ContactItem>
       </Right>
     </Container>
   );

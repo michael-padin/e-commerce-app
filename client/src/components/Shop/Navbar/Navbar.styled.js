@@ -20,7 +20,7 @@ export const Wrapper = styled.div`
   align-items: center;
   justify-content: space-between;
   align-items: center;
-  ${mobile({ padding: "10px",  })}
+  ${mobile({ padding: "10px", height: "80px" })}
 `;
 
 export const Left = styled.div`
@@ -37,15 +37,13 @@ export const Language = styled.span`
 `;
 
 export const SearchContainer = styled.div`
-  border: 1px solid lightgray;
   display: flex;
   align-items: center;
   width: 100%;
-
   margin-left: 25px;
   border-radius: 10px;
   height: 40px;
-  background-color: #f5f7fa;
+  background-color: #ffff;
   ${mobile({ marginLeft: "0", height: "40px" })}
 `;
 
@@ -110,41 +108,39 @@ export const ListItem = styled.li`
   border-radius: 5px;
   &:hover {
     outline: 1px solid #b5838d;
-  /* border: 5px; */
-
+    /* border: 5px; */
   }
 `;
 
 export const AccountContainer = styled.div`
   padding: 10px;
-  ${mobile({padding: "0" })}
-
+  ${mobile({ padding: "0", })}
 `;
 
 export const Circle = styled.div`
-  height: 35px;
-  width: 35px;
+  height: 30px;
+  width: 30px;
   display: flex;
   align-items: center;
   justify-content: center;
   border-radius: 50%;
   color: black;
   background-color: #fff;
+
 `;
+
 export const AccountProfile = styled.h2``;
 
 export const MenuItem = styled.div`
   font-size: 16px;
   cursor: pointer;
-  margin-left: 18px;
   text-decoration: none;
-  ${mobile({ fontSize: "14px", marginLeft: "10px" })}
+  ${mobile({ fontSize: "14px", marginLeft: "15px" })}
 `;
 export const ModalContainer = styled.div`
-
   display: ${(props) => (props.isVisible === true ? "block" : "none")};
   position: absolute;
-  right: 82px;
+  right: 80px;
   bottom: -85px;
   background-color: #fff;
   color: #000;
@@ -168,7 +164,7 @@ export const Sidebar = styled.div`
   height: 100%;
   width: 100%;
   transition: all 0.5s;
-  margin-right: ${(props) => props.isOpen === true? "0" : "-100%" };
+  margin-right: ${(props) => (props.isOpen === true ? "0" : "-100%")};
   padding: 20px;
   top: 0;
   right: 0;
@@ -192,12 +188,12 @@ export const ListItems = styled.li`
 export const IconContainer = styled.div`
   margin-right: 15px;
   display: flex;
-  align-items: center; 
+  align-items: center;
   color: #b5838d;
 `;
 
 export const LinkStyle = {
   textDecoration: "none",
   cursor: "pointer",
-  color: "#000"
-}
+  color: "#000",
+};

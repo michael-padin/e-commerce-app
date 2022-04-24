@@ -82,7 +82,9 @@ const Cart = () => {
                   <div key={index}>
                     <Product>
                       <ProductDetail>
+                        <Link to = {`/product/${product._id}`}>
                         <Image src={product.img} alt={product.img}/>
+                        </Link>
                         <Details >
                           <ProductName >
                             <b>Product: </b> {product.title}

@@ -2,7 +2,7 @@ import styled from "styled-components";
 import { mobile } from "../../responsive.js";
 
 export const Container = styled.div`
-  min-height: 100vh;
+  min-height: 100%;
   max-width: 1500px;
   margin: auto;
 `;
@@ -13,7 +13,6 @@ export const Wrapper = styled.div`
   justify-content: center;
   padding: 20px;
   ${mobile({ padding: "10px" })}
-
 `;
 
 export const Title = styled.h1`
@@ -24,15 +23,17 @@ export const Top = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 20px;
+  padding: 0 0 20px 0;
 `;
 
 export const TopButton = styled.button`
   padding: 10px;
   border-radius: 5px;
   font-size: 1rem;
-  border: ${(props) => props.type === "filled" ? "none" : "2px solid #b5838d"};
-  background-color: ${(props) =>props.type === "filled" ? "#b5838d" : "transparent"};
+  border: ${(props) =>
+    props.type === "filled" ? "none" : "2px solid #b5838d"};
+  background-color: ${(props) =>
+    props.type === "filled" ? "#b5838d" : "transparent"};
   color: ${(props) => props.type === "filled" && "white"};
   cursor: pointer;
 
@@ -41,52 +42,51 @@ export const TopButton = styled.button`
     color: white;
     border: 2px solid #b5838d;
   }
-
 `;
 
 export const EmptyCartContainer = styled.div`
-  height: 100vh;
+  height: 80vh;
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
+
+  ${mobile({ height: "70vh" })}
 `;
 
 export const EmptyCartImageContainer = styled.div`
   height: 150px;
+  ${mobile({ height: "100px" })}
 `;
 
 export const EmptyCartImage = styled.img`
   height: 100%;
 `;
 
-export const EmptyText  = styled.p`
+export const EmptyText = styled.p`
   margin: 15px 0;
 `;
-
 
 export const Bottom = styled.div`
   display: flex;
   flex-direction: column;
-  
+
   ${mobile({ flexDirection: "column" })}
 `;
 
 export const Info = styled.div`
   /* min-height: 50vh; */
   min-height: 50vh;
-
   max-height: 100%;
 
-  ${mobile({ height: "auto"})}
-
+  ${mobile({ height: "auto" })}
 `;
 
 export const Product = styled.div`
   margin: 10px 0;
   display: flex;
   justify-content: space-between;
-  ${mobile({ flexDirection: "column", margin: "0"})}
+  ${mobile({ flexDirection: "column", margin: "0" })}
 `;
 
 export const ProductDetail = styled.div`
@@ -103,7 +103,7 @@ export const PriceDetail = styled.div`
     flexDirection: "row",
     justifyContent: "space-around",
     marginBottom: "20px",
-    marginTop: "20px"
+    marginTop: "20px",
   })}
 `;
 
@@ -149,7 +149,7 @@ export const ProductPrice = styled.div`
 `;
 
 export const DeleteIconContainer = styled.div`
-  margin-top: 20px ;
+  margin-top: 20px;
   ${mobile({ marginBottom: "0", marginTop: "0" })}
 `;
 
@@ -157,14 +157,14 @@ export const Hr = styled.hr`
   background-color: #eee;
   border: none;
   height: 1px;
-  ${mobile({display: "none"})}
+  ${mobile({ display: "none" })}
 `;
 
 export const Image = styled.img`
   width: 200px;
   height: 300px;
   object-fit: cover;
-  ${mobile({height: "150px", width: "auto"})}
+  ${mobile({ height: "150px", width: "auto" })}
 `;
 
 export const Details = styled.div`
@@ -175,18 +175,17 @@ export const Details = styled.div`
 `;
 export const ProductName = styled.span``;
 export const ProductId = styled.span``;
-export const ProductColorContainer= styled.div`
+export const ProductColorContainer = styled.div`
   display: flex;
   flex-direction: row;
-
-`
+`;
 export const ProductColor = styled.div`
   margin-left: 10px;
   width: 20px;
   height: 20px;
   border-radius: 50%;
   border: 1px solid gray;
-  background-color: ${({color}) => color};
+  background-color: ${({ color }) => color};
 `;
 
 export const ProductSize = styled.span``;
@@ -194,12 +193,13 @@ export const ProductSize = styled.span``;
 export const Summary = styled.div`
   position: sticky;
   border-radius: 10px;
-  box-shadow: rgba(0, 0, 0, 0.05) 0px 0px 0px 1px, rgb(209, 213, 219) 0px 0px 0px 1px inset;
+  box-shadow: rgba(0, 0, 0, 0.05) 0px 0px 0px 1px,
+    rgb(209, 213, 219) 0px 0px 0px 1px inset;
   padding: 20px;
   margin-top: 50px;
   bottom: 0;
   background-color: #fff;
-  ${mobile({ margin: "0"})}
+  ${mobile({ margin: "0" })}
 `;
 
 export const SummaryTitle = styled.h1`
@@ -225,13 +225,10 @@ export const SummaryButton = styled.button`
   border-radius: 5px;
   font-weight: 600;
   cursor: pointer;
-  ${mobile({width: "50%"})}
+  ${mobile({ width: "50%" })}
 
   &:hover {
     background-color: transparent;
     background-color: #db9eaa;
   }
-
-
-  
 `;

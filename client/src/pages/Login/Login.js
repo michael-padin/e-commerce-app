@@ -60,7 +60,7 @@ const Login = () => {
         <Title>Log in</Title>
         <Form onSubmit = {handleSubmit} >
           <InputContainer>
-          <Input  name = "email" placeholder="Email" type = "email" onChange={handleChange}/>
+          <Input autoComplete="off" name = "email" placeholder="Email" type = "email" onChange={handleChange}/>
           <ErrorMessage>{emailErr}</ErrorMessage>
           </InputContainer>
           <InputContainer>

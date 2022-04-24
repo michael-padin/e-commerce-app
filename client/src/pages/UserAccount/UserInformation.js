@@ -1,5 +1,4 @@
 import styled from "styled-components";
-import PersonOutlineIcon from "@mui/icons-material/PersonOutline";
 import { mobile } from "../../responsive.js";
 import { useSelector } from "react-redux";
 import UserProfile from "../../components/UserAccount/UserProfile.js";
@@ -16,44 +15,24 @@ const Sidebar = styled.div`
   width: 20%; 
   height: 100%;
   padding: 20px;
-  margin-right: 20px;
+  /* margin-right: 20px; */
   ${mobile({ display: "none" })}
 `;
 const AccountProfile = styled.div`
   padding: 10px 0;                                                                
   display: flex;
   align-items: center;
-  margin-bottom: 25px;
 `;
 const ProfilePicContainer = styled.div`
   width: 50px;
-  height: 50px;
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-right: 10px;
 `;
 
 const ProfilePic = styled.h2`
 `;
 const Username = styled.p``;
-
-const ListItems = styled.ul``;
-
-const ListContainer = styled.div`
-  display: flex;
-  align-items: center;
-  font-weight: 600;
-`;
-
-const IconContainer = styled.div`
-  color: #b5838d;
-`;
-
-const List = styled.li`
-  list-style: none;
-  padding: 10px;
-`;
 
 
 const UserInformation = () => {
@@ -70,14 +49,6 @@ const UserInformation = () => {
           </ProfilePicContainer>
           <Username>{user?.fullName}</Username>
         </AccountProfile>
-        <ListItems>
-          <ListContainer>
-            <IconContainer>
-              <PersonOutlineIcon />
-            </IconContainer>
-              <List>My Account</List>
-          </ListContainer>
-        </ListItems>
       </Sidebar>
       <UserProfile/>
     </Container>

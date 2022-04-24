@@ -1,6 +1,5 @@
 import SearchRounded from "@mui/icons-material/SearchRounded";
 import ShoppingCartOutlinedIcon from "@mui/icons-material/ShoppingCartOutlined";
-import PersonOutlineIcon from "@mui/icons-material/PersonOutline";
 import KeyboardBackspaceOutlinedIcon from "@mui/icons-material/KeyboardBackspaceOutlined";
 import LogoutIcon from "@mui/icons-material/Logout";
 import { Badge } from "@mui/material";
@@ -9,7 +8,9 @@ import { useDispatch, useSelector } from "react-redux";
 import { useState } from "react";
 import {AccountContainer,AccountProfile,ArrowUp,Center,Circle,Container,IconContainer,Input,Left,LinkStyle,List,ListContainer,ListItem,ListItems,Logo,LogoSidebarContainer,MenuItem,ModalContainer,Right,SearchContainer,Sidebar,Wrapper,} from "./Navbar.styled.js";
 import { fetchAsyncProductsBySearch } from "../../../features/productSlice.js";
-import PersonOutlineOutlinedIcon from '@mui/icons-material/PersonOutlineOutlined';
+import PersonIcon from '@mui/icons-material/Person';
+import LoginIcon from '@mui/icons-material/Login';
+import HomeOutlinedIcon from '@mui/icons-material/HomeOutlined';
 import { logoutStart } from "../../../features/userSlice.js";
 
 const Navbar = () => {
@@ -17,7 +18,7 @@ const Navbar = () => {
   const history = useHistory();
   const { quantity } = useSelector((state) => state.cart);
   const user = useSelector((state) => state.user.currentUser);
-  const [visible, setVisible] = useState(true);
+  const [visible, setVisible] = useState(false);
   const [search, setSearch] = useState("");
 
   const handleSubmit = () => {
@@ -26,7 +27,8 @@ const Navbar = () => {
     history.push("/login");
   };
   
-  const handleSearch = () => {
+  const handleSearch = (e) => {
+    e.preventDefault();
     dispatch(fetchAsyncProductsBySearch(search));
     history.push(`/products/search?searchQuery=${search}`);
     setSearch("");
@@ -37,10 +39,12 @@ const Navbar = () => {
       <Container>
         <Wrapper>
           <Left>
+              <form onSubmit = {handleSearch} style = {{width: "100%"}}>
             <SearchContainer>
               <Input type="text" placeholder="Search" onChange={(e) => setSearch(e.target.value)} value={search}/>
-              <SearchRounded onClick={handleSearch} fontSize="medium" style={{ color: "gray" }}/>
+              <SearchRounded onClick = {handleSearch} fontSize="medium" style={{ color: "gray" }}/>
             </SearchContainer>
+              </form>
           </Left>
           <Center>
             <Link to="/" style={{ textDecoration: "none", cursor: "pointer", color: "#fff",}}>
@@ -82,7 +86,7 @@ const Navbar = () => {
                <MenuItem>
                   <AccountContainer onClick={() => setVisible(!visible)} >
                     <Circle>
-                      <AccountProfile><PersonOutlineOutlinedIcon fontSize= "large" color = "disabled"/></AccountProfile>
+                      <AccountProfile><PersonIcon fontSize= "small" color = "disabled"/></AccountProfile>
                     </Circle>
                   </AccountContainer>
                 </MenuItem>
@@ -112,14 +116,23 @@ const Navbar = () => {
             <Logo color="#b5838d">Moka</Logo>
           </LogoSidebarContainer>
           <ListContainer>
+          <Link to="/" style={LinkStyle} onClick={()=> setVisible(!visible)}>
+              <ListItems>
+                <IconContainer>
+                  <HomeOutlinedIcon  />
+                </IconContainer>
+                Home
+              </ListItems>
+            </Link>
             <Link to="/user/account/" style={LinkStyle}>
               <ListItems onClick={() => setVisible(!visible)}>
                 <IconContainer>
-                  <PersonOutlineIcon />
+                  <PersonIcon />
                 </IconContainer>
                 My Account
               </ListItems>
             </Link>
+            
             <ListItems onClick={handleSubmit}>
               <IconContainer>
                 <LogoutIcon />
@@ -137,12 +150,28 @@ const Navbar = () => {
             <Logo color="#b5838d">Moka</Logo>
           </LogoSidebarContainer>
           <ListContainer>
-            <Link to="/user/account/" style={LinkStyle}>
+            <Link to="/" style={LinkStyle} onClick={()=> setVisible(!visible)}>
               <ListItems>
                 <IconContainer>
-                  <PersonOutlineIcon />
+                  <HomeOutlinedIcon  />
                 </IconContainer>
-                Sign In
+                Home
+              </ListItems>
+            </Link>
+            <Link to="/register" style={LinkStyle} onClick={()=> setVisible(!visible)}>
+              <ListItems>
+                <IconContainer>
+                  <PersonIcon  />
+                </IconContainer>
+                Sign Up
+              </ListItems>
+            </Link>
+            <Link to="/login" style={LinkStyle} onClick={()=> setVisible(!visible)}>
+              <ListItems>
+                <IconContainer>
+                  <LoginIcon  />
+                </IconContainer>
+                Log In
               </ListItems>
             </Link>
           </ListContainer>

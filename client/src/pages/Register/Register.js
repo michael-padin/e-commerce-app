@@ -86,15 +86,15 @@ const Register = () => {
         <Title>Sign up</Title>
         <Form onSubmit={handleSubmit}>
           <InputContainer>
-            <Input name="fullName" placeholder="Full Name" onChange={handleChange}/>
+            <Input autoComplete="off" name="fullName" placeholder="Full Name" onChange={handleChange}/>
             <ErrorMessage>{fullNameErr}</ErrorMessage>
           </InputContainer>
           <InputContainer>
-            <Input name="email" type="email" onChange={handleChange} placeholder="Email"/>
+            <Input autoComplete="off" name="email" type="email" onChange={handleChange} placeholder="Email"/>
             <ErrorMessage>{emailErr}</ErrorMessage>
           </InputContainer>
           <InputContainer>
-            <Input name="password" type="password" placeholder="Password" onChange={handleChange}/>
+            <Input autoComplete="off" name="password" type="password" placeholder="Password" onChange={handleChange}/>
             <ErrorMessage>{passwordErr ? passwordErr: serverErr}</ErrorMessage>
           </InputContainer>
           <BottomContainer>

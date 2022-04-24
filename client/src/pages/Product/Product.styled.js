@@ -8,9 +8,14 @@ export const Container = styled.div`
     rgba(27, 31, 35, 0.15) 0px 0px 0px 1px;
   margin: 20px auto;
   border-radius: 14px;
-  ${mobile({ borderRadius: "none", boxShadow: "none", margin: "10px 0" })}
+  ${mobile({
+    boxShadow: "none",
+    margin: "0",
+    borderRadius: "0",
+  })}
 `;
 export const Wrapper = styled.div`
+  position: relative;
   padding: 50px;
   display: flex;
   ${mobile({ padding: "10px", flexDirection: "column" })}
@@ -44,7 +49,7 @@ export const Price = styled.span`
 
 export const FilterContainer = styled.div`
   display: flex;
-  width: 50%;
+  width: 80%;
   justify-content: space-between;
   margin: 30px 0;
   ${mobile({ width: "100%" })}
@@ -74,16 +79,17 @@ export const FilterSize = styled.select`
   border: none;
   box-shadow: rgba(0, 0, 0, 0.05) 0px 0px 0px 1px;
   cursor: pointer;
-  border: 1px solid #b5838d;
+  
 `;
 export const FilterSizeOption = styled.option``;
 
 export const AddContainer = styled.div`
-  width: 50%;
+  width: 80%;
   display: flex;
   align-items: center;
+  margin-bottom: 5rem;
   justify-content: space-between;
-  ${mobile({ width: "100%" })}
+  ${mobile({ width: "100%", marginBottom: "2rem" })}
   ${tablet({ width: "100%" })}
 `;
 
@@ -91,18 +97,22 @@ export const Button = styled.button`
   padding: 10px;
   border: none;
   background: none;
-  box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
-  border: 1px solid #b5838d;
-  border-radius: 4px;
+  border-radius: 10px;
   cursor: pointer;
   transition: 0.2s;
   font-weight: 500;
+  height: 60px;
+  color: #ffff;
+  width: 50%;
+  background-color: #b5838d;
 
   &:hover {
-    background-color: #b5838d;
-    border: 1px solid #b5838d;
+    background-color: #ffb8c6;
     color: #ffff;
   }
+  ${tablet({ width: "100%" })}
+  ${mobile({ width: "100%" })}
+
 `;
 
 /* Skeleton Part */
@@ -123,7 +133,7 @@ export const SkeletonTitle = styled.div`
   background-color: #fafafa;
   width: 50%;
   height: 50px;
- margin: 0px 0px 20px 0;
+  margin: 0px 0px 20px 0;
 `;
 export const SkeletonDesc = styled.div`
   background-color: #fafafa;
@@ -135,7 +145,6 @@ export const SkeletonDesc = styled.div`
 export const ProductQuantityContainer = styled.div`
   display: flex;
   align-items: center;
-  margin-bottom: 20px;
   ${mobile({
     flexDirection: "row",
     justifyContent: "space-evenly",
@@ -206,4 +215,15 @@ export const CloseIconContainer = styled.div`
   right: 5px;
   background-color: #e4e6eb;
   border-radius: 50%;
+`;
+
+export const IconContainer = styled.div`
+  color: #b5838d;
+  /* margin-top: 1rem;  */
+  position: absolute;
+  display: flex;
+  flex-wrap: wrap;
+  top: 10px;
+  left: 20px;
+  ${mobile({ top: "20px" })}
 `;

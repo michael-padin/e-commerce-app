@@ -5,27 +5,31 @@ export const Container = styled.div`
   border-radius: 10px;
   box-shadow: rgba(9, 30, 66, 0.25) 0px 1px 1px,
     rgba(9, 30, 66, 0.13) 0px 0px 1px 1px;
-
-  max-width: 1200px;
-  margin: 30px auto;
+  max-width: 1000px;
+  margin: 5rem auto;
   height: 100%;
   background-color: #fff;
   display: flex;
   align-items: center;
-  ${mobile({ padding: "20px",  display: "block", boxShadow: "none",  })}
+  ${mobile({
+    padding: "20px",
+    display: "block",
+    boxShadow: "none",
+    margin: "30px auto",
+  })}
 `;
 
 export const ImageContainer = styled.div`
   border-radius: 10px;
   display: flex;
   align-items: center;
-  height: 80vh;
+  height: 100%;
   margin: 10px;
   width: 50%;
   background-color: #f5f4f9;
   ${mobile({ display: "none" })}
   ${tablet({
-    height: "100%", 
+    height: "100%",
   })}
 `;
 export const Image = styled.img`
@@ -34,13 +38,14 @@ export const Image = styled.img`
 export const Wrapper = styled.div`
   margin: auto;
   border-radius: 5px;
-  padding: 20px;
+  /* padding: 20px; */
   width: 35%;
   background-color: white;
   flex-direction: column;
-  ${mobile({ width: "100%",  padding: "0" })}
+  ${mobile({ width: "100%", padding: "0" })}
   ${tablet({
-    padding: "0", width: "40%"
+    padding: "0",
+    width: "40%",
   })}
 `;
 export const Title = styled.h1`
@@ -64,8 +69,7 @@ export const Input = styled.input`
   padding: 15px;
   border: 1px solid lightgray;
   border-radius: 5px;
-  width: 100%;  
-
+  width: 100%;
 
   &:focus {
     outline: 1px solid #b5838d;
@@ -105,7 +109,6 @@ export const ErrorMessage = styled.div`
   padding: 5px 0 0 5px;
 `;
 
-
 export const LinkContainer = styled.div`
   font-size: 14px;
 `;
@@ -116,5 +119,3 @@ export const linkStyle = {
   cursor: "pointer",
   color: "#ffb8c6",
 };
-
-

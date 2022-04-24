@@ -8,7 +8,7 @@ export const Container = styled.div`
   padding: 20px;
   box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;
   border-radius: 14px;
-  ${mobile({ padding: "5px", boxShadow: "none", margin: "0"})}
+  ${mobile({ padding: "5px", boxShadow: "none", margin: "0", borderRadius: "0"})}
   background-color: #fff;
   margin: 20px auto;
 `;
@@ -57,3 +57,8 @@ export const Option = styled.option`
 `;
 
 
+export const IconContainer = styled.div`
+  display: flex;
+  color: #b5838d;
+  margin-top: 1rem; 
+`;
