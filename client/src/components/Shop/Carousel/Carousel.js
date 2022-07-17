@@ -9,7 +9,7 @@ const Container = styled.div`
   background-size: cover;
   height: 100vh;
   justify-content: center;
-  
+
   margin: auto;
   overflow: hidden;
   ${mobile({ height: "50vh" })}
@@ -80,7 +80,6 @@ const Description = styled.p`
   ${tablet({ margin: "50px 0 0 0 ", lineHeight: "40px" })}
 `;
 
-
 const Carousel = () => {
   return (
     <Container>
@@ -88,9 +87,7 @@ const Carousel = () => {
         <ParentContainer>
           <InfoContainer>
             <Title>LOUNGEWEAR LOVE</Title>
-            <Description>
-              GET FLAT 20% OFF FOR NEW ARRIVALS
-            </Description>
+            <Description>GET FLAT 20% OFF FOR NEW ARRIVALS</Description>
           </InfoContainer>
         </ParentContainer>
       </Overlay>
