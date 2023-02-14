@@ -1,8 +1,8 @@
 import axios from "axios";
-require('dotenv').config()  
+import dotenv from "dotenv";
+dotenv.config();
 
-
-const BASE_URL = "https://moka-shop.herokuapp.com/api/"
+const BASE_URL = "https://moka-shop-api.onrender.com/api/"
 const TOKEN  = process.env.TOKEN;
 export const publicRequest = axios.create({
     baseURL: BASE_URL
