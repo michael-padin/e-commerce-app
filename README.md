@@ -25,3 +25,5 @@ Now that we have the repository forked to our namespace and cloned to our develo
   3. `git push origin {{ branch-name }}`
 5. Issue a pull request to upstream in GitHub Enterprise.  Include in the PR the issue number that your work resolves (i.e. Resolves #42).
 6. Once your PR is merged by the repository administrator, delete your branch.
+
+   
